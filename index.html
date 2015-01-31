@@ -25,7 +25,7 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <md-sidenav layout="column" style="overflow: hidden;" flex class="site-sidenav md-sidenav-left md-whiteframe-z2 md-closed ng-isolate-scope md-locked-open" md-component-id="left" md-is-locked-open="$media('gt-sm')" tabindex="-1">
+    <!--<md-sidenav layout="column" style="overflow: hidden;" flex class="site-sidenav md-sidenav-left md-whiteframe-z2 md-closed ng-isolate-scope md-locked-open" md-component-id="left" md-is-locked-open="$media('gt-sm')" tabindex="-1">
         <md-toolbar class="md-default-theme">
             <h1 class="md-toolbar-tools">
                 <a style="line-height:40px; text-indent:15px;" ng-href="/" layout="row" flex href="/">
@@ -34,25 +34,31 @@
             </h1>
         </md-toolbar>
         <md-content layout="column" class="md-default-theme">
-            <md-button>Category</md-button>
-            <md-button>Other Category</md-button>
+            <md-button>Currently Available</md-button>
+            <md-button>Radio PSI</md-button>
+            <md-button>Special Events</md-button>
+            <md-button>Funfests</md-button>
+            <md-button>Retired Things</md-button>
+            <md-button>Unobtainables</md-button>
+            <md-button>Unique</md-button>
+            <md-divider></md-divider>
             <md-button ng-href="{{forumsUrl}}" target="_blank">Return to Starmen.net Forums</md-button>
         </md-content>
-    </md-sidenav>
+    </md-sidenav>-->
     <div layout="column" layout-fill tabindex="-1" role="main">
         <md-toolbar class="md-default-theme">
             <div class="md-toolbar-tools"  tabindex="0">
-                <button ng-click="toggleSidenav('left')" hide-gt-sm aria-label="Toggle Menu" class="menu-icon menuBtn">
+                <!--<button ng-click="toggleSidenav('left')" hide-gt-sm aria-label="Toggle Menu" class="menu-icon menuBtn hide-item">
                     <span class="visuallyhidden">Menu</span>
-                </button>
+                </button>-->
                     <div layout="row" flex class="fill-height">
                         <div class="md-toolbar-item md-breadcrumb">
-                            <span style="display: inline-block;" class="ng-binding"></span>
+                            <span style="display: inline-block;" class="ng-binding">Badge Guide</span>
                         </div>
                         <span flex></span>
-                        <div class="md-toolbar-item md-tools ng-hide animate-hide" ng-hide="$media('gt-sm')" layout="row">
+                        <div class="md-toolbar-item md-tools" ng-animate="animate" ng-hide="$media('gt-sm')" layout="row">
                             <md-input-container layout="column">
-                                <input ng-model="badgeFilter" type="search" />
+                                <input ng-model="searchText" type="search" />
                                 <label><i class="fa fa fa-search fa-md"></i></label>
                             </md-input-container>
                         </div>
@@ -61,12 +67,12 @@
         </md-toolbar>
         <md-content flex class="md-padding ng-scope md-default-theme">
             <div layout="column" class="ng-scope">
-                <md-progress-circular md-mode="indeterminate" ng-hide="{{doneloading}}"></md-progress-circular>
+                <md-progress-circular class="hide-item" md-mode="indeterminate" ng-hide="doneloading" layout="center center" flex></md-progress-circular>
                 <md-list>
-                    <md-item ng-repeat="badge in badgeList | filter: searchFilter | orderBy: '-created_at'">
+                    <md-item ng-repeat="badge in badgeList | filter: searchFilter | filter: badgeFilter | orderBy: '-created_at'" class="repeat-item">
                         <md-item-content layout="row">
                             <div>
-                                <img ng-src="{{badge.URL}}" alt="{{badge.title}}" class="face" />
+                                <a ng-href="{{badge.link}}"><img ng-src="{{badge.URL}}" alt="{{badge.title}}" class="face" /></a>
                                 <md-tooltip>
                                     {{badge.title_tag}}
                                 </md-tooltip>
@@ -75,6 +81,9 @@
                             <div class="md-tile-content" layout="column">
                                 <h3>{{badge.name}}</h3>
                                 <p>{{badge.comment}}</p>
+                            </div>
+                            <div class="md-tile-content" layout="column right">
+                                <p style="font-style:italic;">Last Updated {{badge.updated_at}}<br>Tags: {{badge.category_tags}}</p>
                             </div>
                         </md-item-content>
                         <md-divider inset></md-divider>
