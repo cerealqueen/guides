@@ -19,7 +19,7 @@
 		"link": "",
 		"created_at": "2008-02-15 06:57:38",
 		"updated_at": "2008-07-06 18:02:19",
-		"category_tags": [ ]
+		"category_tags": ["unique"]
 	},
 	{
 		"id": 5,
@@ -52,7 +52,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:11:52",
 		"updated_at": "2008-07-06 13:11:52",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 8,
@@ -63,7 +63,7 @@
 		"link": "http://sexybeam.net",
 		"created_at": "2008-07-06 13:12:35",
 		"updated_at": "2008-07-06 13:12:35",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable", "retired"]
 	},
 	{
 		"id": 9,
@@ -74,7 +74,7 @@
 		"link": "http://sexybeam.net",
 		"created_at": "2008-07-06 13:13:16",
 		"updated_at": "2008-07-06 13:13:16",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable", "retired"]
 	},
 	{
 		"id": 10,
@@ -85,7 +85,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:13:55",
 		"updated_at": "2008-07-06 13:13:55",
-		"category_tags": [ ]
+		"category_tags": ["retired"]
 	},
 	{
 		"id": 11,
@@ -96,7 +96,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:14:14",
 		"updated_at": "2008-07-06 13:14:14",
-		"category_tags": [ ]
+		"category_tags": ["retired"]
 	},
 	{
 		"id": 12,
@@ -107,7 +107,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:14:28",
 		"updated_at": "2008-07-06 13:14:28",
-		"category_tags": [ ]
+		"category_tags": ["retired"]
 	},
 	{
 		"id": 13,
@@ -118,7 +118,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:14:39",
 		"updated_at": "2008-07-06 13:14:39",
-		"category_tags": [ ]
+		"category_tags": ["retired"]
 	},
 	{
 		"id": 14,
@@ -129,7 +129,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:14:51",
 		"updated_at": "2008-07-06 13:14:51",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 15,
@@ -140,7 +140,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:15:12",
 		"updated_at": "2008-07-06 13:15:12",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 16,
@@ -151,7 +151,7 @@
 		"link": "http://tomato.fobby.net/2008/12/05/famicom-detective-club-2-video/",
 		"created_at": "2008-07-06 13:16:10",
 		"updated_at": "2008-12-16 12:38:00",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 17,
@@ -162,7 +162,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:16:35",
 		"updated_at": "2008-07-06 13:16:35",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 18,
@@ -173,7 +173,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:16:49",
 		"updated_at": "2008-07-06 13:16:49",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 19,
@@ -184,7 +184,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:17:00",
 		"updated_at": "2008-07-06 13:17:00",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 20,
@@ -195,7 +195,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:17:11",
 		"updated_at": "2008-07-06 13:17:11",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 21,
@@ -206,7 +206,7 @@
 		"link": "http://tomato.fobby.net/2008/12/07/tomato-boxes/",
 		"created_at": "2008-07-06 13:17:41",
 		"updated_at": "2008-12-16 12:38:15",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 22,
@@ -217,7 +217,7 @@
 		"link": "http://starmen.net/donation.php",
 		"created_at": "2008-07-06 13:18:53",
 		"updated_at": "2010-10-19 17:14:14",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 23,
@@ -228,7 +228,7 @@
 		"link": "http://starmen.net/donation.php",
 		"created_at": "2008-07-06 13:19:43",
 		"updated_at": "2010-10-19 17:14:23",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 24,
@@ -239,7 +239,7 @@
 		"link": "http://starmen.net/donation.php",
 		"created_at": "2008-07-06 13:20:21",
 		"updated_at": "2010-10-19 17:14:34",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 25,
@@ -250,7 +250,7 @@
 		"link": "http://starmen.net/donation.php",
 		"created_at": "2008-07-06 13:20:44",
 		"updated_at": "2010-10-19 17:14:47",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 26,
@@ -261,7 +261,7 @@
 		"link": "http://starmen.net/donation.php",
 		"created_at": "2008-07-06 13:21:19",
 		"updated_at": "2010-10-19 17:14:58",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unbotainable"]
 	},
 	{
 		"id": 27,
@@ -272,7 +272,7 @@
 		"link": "http://starmen.net/pkhack",
 		"created_at": "2008-07-06 13:22:12",
 		"updated_at": "2008-07-06 13:22:12",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 28,
@@ -283,7 +283,7 @@
 		"link": "http://tomato.fobby.net/eb0",
 		"created_at": "2008-07-06 13:22:43",
 		"updated_at": "2008-07-06 13:22:43",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 29,
@@ -294,7 +294,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:23:14",
 		"updated_at": "2008-07-06 13:23:14",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 30,
@@ -305,7 +305,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:23:31",
 		"updated_at": "2008-07-06 13:23:31",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 31,
@@ -316,7 +316,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:23:49",
 		"updated_at": "2008-07-06 13:23:49",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 32,
@@ -327,7 +327,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:24:40",
 		"updated_at": "2008-07-06 13:24:40",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 33,
@@ -338,7 +338,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:25:05",
 		"updated_at": "2008-07-06 13:25:05",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 34,
@@ -349,7 +349,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:25:24",
 		"updated_at": "2008-07-06 13:25:24",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 35,
@@ -360,7 +360,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:25:35",
 		"updated_at": "2008-07-06 13:25:35",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 36,
@@ -371,7 +371,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:25:59",
 		"updated_at": "2008-07-06 13:25:59",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 37,
@@ -382,7 +382,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:26:22",
 		"updated_at": "2008-07-06 13:26:22",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 38,
@@ -393,7 +393,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:26:39",
 		"updated_at": "2008-07-06 13:26:39",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 39,
@@ -404,7 +404,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:26:49",
 		"updated_at": "2008-07-06 13:26:49",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 40,
@@ -415,7 +415,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:27:07",
 		"updated_at": "2008-07-06 13:27:07",
-		"category_tags": [ ]
+		"category_tags": ["unique"]
 	},
 	{
 		"id": 41,
@@ -426,7 +426,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:27:18",
 		"updated_at": "2008-07-06 13:27:29",
-		"category_tags": [ ]
+		"category_tags": ["unique"]
 	},
 	{
 		"id": 42,
@@ -437,7 +437,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:27:51",
 		"updated_at": "2008-07-06 13:27:51",
-		"category_tags": [ ]
+		"category_tags": ["unique"]
 	},
 	{
 		"id": 43,
@@ -448,7 +448,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:28:24",
 		"updated_at": "2008-07-06 13:28:24",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 44,
@@ -470,7 +470,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:29:04",
 		"updated_at": "2008-07-06 13:29:04",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 46,
@@ -481,7 +481,7 @@
 		"link": "http://starmen.net/forum/rules",
 		"created_at": "2008-07-06 13:29:46",
 		"updated_at": "2008-07-06 13:29:46",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 47,
@@ -492,7 +492,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:29:56",
 		"updated_at": "2008-07-06 13:29:56",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 48,
@@ -503,7 +503,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:30:39",
 		"updated_at": "2008-07-06 13:30:39",
-		"category_tags": [ ]
+		"category_tags": ["unique"]
 	},
 	{
 		"id": 49,
@@ -514,7 +514,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:31:15",
 		"updated_at": "2008-07-06 13:32:04",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 50,
@@ -525,7 +525,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:31:55",
 		"updated_at": "2008-07-06 13:31:55",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 51,
@@ -536,7 +536,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:32:25",
 		"updated_at": "2008-07-06 13:32:25",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 52,
@@ -547,7 +547,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:33:03",
 		"updated_at": "2008-07-06 13:33:03",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 53,
@@ -558,7 +558,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:33:29",
 		"updated_at": "2009-04-22 20:37:23",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 54,
@@ -569,7 +569,7 @@
 		"link": "http://starmen.net/fanart/fotw",
 		"created_at": "2008-07-06 13:34:25",
 		"updated_at": "2008-07-09 06:38:53",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 55,
@@ -580,7 +580,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:35:12",
 		"updated_at": "2008-07-06 13:35:12",
-		"category_tags": [ ]
+		"category_tags": ["current"]
 	},
 	{
 		"id": 56,
@@ -591,7 +591,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:35:36",
 		"updated_at": "2008-07-06 13:35:36",
-		"category_tags": [ ]
+		"category_tags": ["current"]
 	},
 	{
 		"id": 57,
@@ -602,7 +602,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:35:57",
 		"updated_at": "2008-07-06 13:35:57",
-		"category_tags": [ ]
+		"category_tags": ["current"]
 	},
 	{
 		"id": 58,
@@ -613,7 +613,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:36:22",
 		"updated_at": "2008-07-06 13:36:22",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 59,
@@ -624,7 +624,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:36:57",
 		"updated_at": "2008-07-06 13:36:57",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 60,
@@ -635,7 +635,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:37:13",
 		"updated_at": "2008-07-06 13:37:13",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 61,
@@ -646,7 +646,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:37:33",
 		"updated_at": "2008-07-06 13:37:33",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 62,
@@ -657,7 +657,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:38:14",
 		"updated_at": "2008-07-06 13:38:14",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 63,
@@ -668,7 +668,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:38:56",
 		"updated_at": "2008-07-06 13:38:56",
-		"category_tags": [ ]
+		"category_tags": ["funfests"]
 	},
 	{
 		"id": 64,
@@ -679,7 +679,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:39:19",
 		"updated_at": "2008-07-06 13:39:19",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 65,
@@ -690,7 +690,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:39:42",
 		"updated_at": "2008-07-06 13:39:42",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 66,
@@ -701,7 +701,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:40:09",
 		"updated_at": "2008-07-06 13:40:09",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 67,
@@ -712,7 +712,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:40:39",
 		"updated_at": "2008-07-06 13:40:39",
-		"category_tags": [ ]
+		"category_tags": ["radiopsi", "unobtainable"]
 	},
 	{
 		"id": 68,
@@ -723,7 +723,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:40:55",
 		"updated_at": "2008-07-06 13:40:55",
-		"category_tags": [ ]
+		"category_tags": ["radiopsi", "unobtainable"]
 	},
 	{
 		"id": 69,
@@ -734,7 +734,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:41:11",
 		"updated_at": "2008-07-06 13:41:11",
-		"category_tags": [ ]
+		"category_tags": ["radiopsi", "unobtainable"]
 	},
 	{
 		"id": 70,
@@ -745,7 +745,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:41:28",
 		"updated_at": "2008-07-06 13:41:28",
-		"category_tags": [ ]
+		"category_tags": ["radiospi", "unobtainable"]
 	},
 	{
 		"id": 71,
@@ -756,7 +756,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:41:54",
 		"updated_at": "2008-07-06 13:41:54",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 72,
@@ -767,7 +767,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:43:04",
 		"updated_at": "2008-07-06 13:43:04",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 73,
@@ -778,7 +778,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:43:22",
 		"updated_at": "2008-07-06 13:43:22",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 74,
@@ -789,7 +789,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:43:36",
 		"updated_at": "2008-07-06 13:43:36",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 75,
@@ -800,7 +800,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:43:55",
 		"updated_at": "2008-07-06 13:43:55",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 76,
@@ -811,7 +811,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:44:09",
 		"updated_at": "2008-07-06 13:44:09",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 77,
@@ -822,7 +822,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:45:24",
 		"updated_at": "2008-07-06 13:45:24",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 78,
@@ -833,7 +833,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:45:35",
 		"updated_at": "2008-07-06 13:45:35",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 79,
@@ -844,7 +844,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:45:49",
 		"updated_at": "2008-07-06 13:45:49",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 80,
@@ -855,7 +855,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:45:58",
 		"updated_at": "2008-07-06 13:45:58",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 81,
@@ -866,7 +866,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:46:17",
 		"updated_at": "2008-07-06 13:46:17",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 82,
@@ -877,7 +877,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:46:42",
 		"updated_at": "2008-07-06 13:46:42",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 83,
@@ -888,7 +888,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:47:00",
 		"updated_at": "2008-07-06 13:47:00",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 84,
@@ -899,7 +899,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:47:19",
 		"updated_at": "2008-07-06 13:47:19",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 85,
@@ -910,7 +910,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:47:43",
 		"updated_at": "2008-07-06 13:48:05",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 86,
@@ -921,7 +921,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:48:41",
 		"updated_at": "2008-07-06 13:48:41",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 87,
@@ -932,7 +932,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:49:18",
 		"updated_at": "2008-07-06 13:49:18",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 88,
@@ -943,7 +943,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:49:43",
 		"updated_at": "2008-07-06 13:49:49",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 89,
@@ -954,7 +954,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:50:19",
 		"updated_at": "2008-07-06 13:50:19",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 90,
@@ -965,7 +965,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:50:52",
 		"updated_at": "2008-07-06 13:50:52",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 91,
@@ -976,7 +976,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:51:16",
 		"updated_at": "2008-07-06 13:51:16",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 92,
@@ -987,7 +987,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:51:42",
 		"updated_at": "2008-07-06 13:51:42",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 93,
@@ -998,7 +998,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:52:03",
 		"updated_at": "2008-07-06 13:52:03",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 94,
@@ -1009,7 +1009,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:52:35",
 		"updated_at": "2010-07-31 01:10:25",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 95,
@@ -1020,7 +1020,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:52:52",
 		"updated_at": "2010-07-31 01:10:44",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 96,
@@ -1031,7 +1031,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:53:50",
 		"updated_at": "2008-07-06 13:53:50",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 97,
@@ -1042,7 +1042,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:54:33",
 		"updated_at": "2008-07-06 13:54:33",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 98,
@@ -1053,7 +1053,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:55:16",
 		"updated_at": "2008-07-06 13:55:16",
-		"category_tags": [ ]
+		"category_tags": ["retired", "unobtainable"]
 	},
 	{
 		"id": 99,
@@ -1064,7 +1064,7 @@
 		"link": "http://fangamer.com/blog/2007/11/27/header-contest",
 		"created_at": "2008-07-06 13:56:04",
 		"updated_at": "2008-07-06 13:56:04",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 100,
@@ -1075,7 +1075,7 @@
 		"link": "http://fangamer.com/blog/2007/11/27/header-contest",
 		"created_at": "2008-07-06 13:56:32",
 		"updated_at": "2008-07-06 13:56:32",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 101,
@@ -1086,7 +1086,7 @@
 		"link": "http://starmen.net/halloween07/entries",
 		"created_at": "2008-07-06 13:57:32",
 		"updated_at": "2008-07-06 13:57:32",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 102,
@@ -1097,7 +1097,7 @@
 		"link": "http://starmen.net/holiday07",
 		"created_at": "2008-07-06 13:58:18",
 		"updated_at": "2008-07-06 13:58:18",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 103,
@@ -1108,7 +1108,7 @@
 		"link": "http://starmen.net/holiday07",
 		"created_at": "2008-07-06 13:58:50",
 		"updated_at": "2008-07-06 13:58:50",
-		"category_tags": [ ]
+		"category_tags": ["funfests", "unobtainable"]
 	},
 	{
 		"id": 104,
@@ -1119,7 +1119,7 @@
 		"link": "http://starmen.net/ebsiege/pktuben",
 		"created_at": "2008-07-06 13:59:15",
 		"updated_at": "2008-07-06 13:59:15",
-		"category_tags": [ ]
+		"category_tags": ["events", "unobtainable"]
 	},
 	{
 		"id": 105,
@@ -1130,7 +1130,7 @@
 		"link": "",
 		"created_at": "2008-07-06 13:59:37",
 		"updated_at": "2008-07-06 13:59:37",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 106,
@@ -1141,7 +1141,7 @@
 		"link": "",
 		"created_at": "2008-07-07 14:10:43",
 		"updated_at": "2008-07-07 14:10:43",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 107,
@@ -1152,7 +1152,7 @@
 		"link": "",
 		"created_at": "2008-07-09 06:24:41",
 		"updated_at": "2008-07-09 06:24:41",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 108,
@@ -1163,7 +1163,7 @@
 		"link": "",
 		"created_at": "2008-07-09 06:44:01",
 		"updated_at": "2008-07-09 06:44:01",
-		"category_tags": [ ]
+		"category_tags": ["unique", "unobtainable"]
 	},
 	{
 		"id": 109,
@@ -1174,7 +1174,7 @@
 		"link": "",
 		"created_at": "2008-07-09 06:46:14",
 		"updated_at": "2008-07-09 06:46:14",
-		"category_tags": [ ]
+		"category_tags": ["unobtainable"]
 	},
 	{
 		"id": 110,
@@ -1185,7 +1185,7 @@
 		"link": "http://starmen.net/radio/segments/",
 		"created_at": "2008-07-09 10:45:38",
 		"updated_at": "2010-04-12 01:00:26",
-		"category_tags": [ ]
+		"category_tags": ["radiopsi", "current"]
 	},
 	{
 		"id": 111,
@@ -3589,8 +3589,8 @@
 		"id": 331,
 		"name": "Hamtaro Stamp Toyota Corolla",
 		"URL": "http://local-static2.forum-files.fobby.net/forum_attachments/0035/3242/hammsadt.gif",
-		"comment": "Given to stephastated because buck fever is abusing his power",
-		"title_tag": "Smelly Hamster Girl",
+		"comment": "Given to Derek Rose's girlfriend because he's abusing his power",
+		"title_tag": "Buck Fever's Snuggly Girlfriend",
 		"link": "",
 		"created_at": "2013-12-30 04:01:00",
 		"updated_at": "2014-10-13 01:42:42",
@@ -4892,94 +4892,6 @@
 		"link": "",
 		"created_at": "2015-01-06 14:31:33",
 		"updated_at": "2015-01-06 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 450,
-		"name": "Doctor Hobo's Love Hotel",
-		"URL": "http://local-static2.forum-files.fobby.net/forum_attachments/0038/6067/hoboslovehotel.png",
-		"comment": "The unfortunate Souls of PAX 2015",
-		"title_tag": "Wishing you were somehow here again",
-		"link": "",
-		"created_at": "2015-02-06 14:31:33",
-		"updated_at": "2015-02-06 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 451,
-		"name": "meep",
-		"URL": "http://local-static1.forum-files.fobby.net/forum_attachments/0038/6306/meepbadge.png",
-		"comment": "meep",
-		"title_tag": "MET500 is lovable",
-		"link": "",
-		"created_at": "2015-02-07 14:31:33",
-		"updated_at": "2015-02-07 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 452,
-		"name": "Flipnote Contest",
-		"URL": "http://local-static2.forum-files.fobby.net/forum_attachments/0038/4472/flipnote.png",
-		"comment": "Flipnote Contest",
-		"title_tag": "Flipped Out",
-		"link": "",
-		"created_at": "2015-03-08 14:31:33",
-		"updated_at": "2015-03-08 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 453,
-		"name": "Taco Hell",
-		"URL": "http://local-static3.forum-files.fobby.net/forum_attachments/0038/7398/help.png",
-		"comment": "I survived Taco Hell",
-		"title_tag": "I survived Taco Hell",
-		"link": "",
-		"created_at": "2015-03-09 14:31:33",
-		"updated_at": "2015-03-09 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 454,
-		"name": "Lucas Collab",
-		"URL": "http://local-static2.forum-files.fobby.net/forum_attachments/0038/7637/30x30_lucas_head.png",
-		"comment": "Lucas Collab",
-		"title_tag": "ravioli ravioli we got the lucasoli",
-		"link": "",
-		"created_at": "2015-05-06 14:31:33",
-		"updated_at": "2015-05-06 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 455,
-		"name": "dong",
-		"URL": "http://local-static2.forum-files.fobby.net/forum_attachments/0039/1182/dong.png",
-		"comment": "dong",
-		"title_tag": "( )( )",
-		"link": "https://www.youtube.com/watch?v=JO_Tn9d9u1A",
-		"created_at": "2015-06-04 14:31:33",
-		"updated_at": "2015-06-04 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 456,
-		"name": "Cackle",
-		"URL": "http://local-static1.forum-files.fobby.net/forum_attachments/0039/1306/cackle.png",
-		"comment": "Social media representation",
-		"title_tag": "Social Media Headliner",
-		"link": "https://www.facebook.com/starmennet",
-		"created_at": "2015-06-05 14:31:33",
-		"updated_at": "2015-06-05 14:31:33",
-		"category_tags": [ ]
-	},
-	{
-		"id": 457,
-		"name": "Sonic OC Do NOt STeal",
-		"URL": "http://local-static4.forum-files.fobby.net/forum_attachments/0039/1309/burp.png",
-		"comment": "Sonic OC Collab",
-		"title_tag": "The night comes at last, you’d better go fast",
-		"link": "",
-		"created_at": "2015-06-05 16:31:33",
-		"updated_at": "2015-06-05 16:31:33",
 		"category_tags": [ ]
 	}
 ]
