@@ -1,6 +1,0 @@
-E:\Documents\My Web Sites\BadgeGuide\BadgeGuide\bin\HTML5 Boiler Plate v4.3.dll.config
-E:\Documents\My Web Sites\BadgeGuide\BadgeGuide\bin\HTML5 Boiler Plate v4.3.dll
-E:\Documents\My Web Sites\BadgeGuide\BadgeGuide\bin\HTML5 Boiler Plate v4.3.pdb
-E:\Documents\My Web Sites\BadgeGuide\BadgeGuide\obj\Debug\BadgeGuide.csprojResolveAssemblyReference.cache
-E:\Documents\My Web Sites\BadgeGuide\BadgeGuide\obj\Debug\HTML5 Boiler Plate v4.3.dll
-E:\Documents\My Web Sites\BadgeGuide\BadgeGuide\obj\Debug\HTML5 Boiler Plate v4.3.pdb
