@@ -18,18 +18,20 @@ var Badge = React.createClass({
     render: function() {
         var badgeObj = this.props.badge;
         return (
+            <div className="badgeContainer">
             <div className="badgeItem">
             <div className="block">
             <a href={badgeObj.link}>
             <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
             </a>
             </div>
-            <Tags tags={badgeObj.category_tags} />
             <div className="block">
             <h3>{badgeObj.name}</h3>
             <p>{badgeObj.comment}</p>
             </div>
+            <Tags tags={badgeObj.category_tags} />
             <div className="divider"></div>
+            </div>
             </div>
         );
     }
