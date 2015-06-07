@@ -69,9 +69,6 @@ var NavBar = React.createClass({
             <li className="links">
             <a className="starmen" href="http://starmen.net"><img src="img/logo-starmen.png" alt="Starmen.net"/></a>
             </li>
-            <li className="links">
-            <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github"></i></a>
-            </li>
             <li className="search">
             <input className="filterEntry" type="text" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
             <input className="currentCheck" type="checkbox" checked={this.props.currentOnly} ref="currentOnlyInput" onChange={this.handleChange} id="currentOnlyInput" />
@@ -79,6 +76,7 @@ var NavBar = React.createClass({
             <label className="currentCheck" for="currentOnlyInput">Currently available only</label>
             </li>
             </ul>
+            <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github fa-2x"></i></a>
             </div>
             </header>
         );

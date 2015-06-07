@@ -59,32 +59,39 @@ header {
     margin-top: 1em;
 }
 
-.navbar > ul > .links > a:link {
+.navbar > a:link, img {
     color: white;
-    opacity: 0.6;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
 
-.navbar > ul > .links > a:visited {
+.navbar > a:visited {
     color: white;
-    opacity: 0.6;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
 
-.navbar > ul > .links > a:hover {
+.navbar > a:hover, img:hover {
     color: white;
     opacity: 1.0;
+    filter: alpha(opacity=100);
 }
 
-.navbar > ul > .links > a:active {
+.navbar > a:active {
     color: black;
     opacity: 1.0;
+    filter: alpha(opacity=100);
 }
 
 .navbar > ul > .links > .starmen {
     
 }
 
-.navbar > ul > .links > .github {
-    
+.navbar > .github {
+    position:absolute;
+    display: inline-block;
+    right:0px;
+    margin:10px;
 }
 
 .navbar > ul > .search {
