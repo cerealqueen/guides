@@ -99,9 +99,12 @@ input::-webkit-input-placeholder {
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+    color: white;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
 
-.navbar > a:link, img {
+.navbar > a:link {
     color: white;
     opacity: 0.5;
     filter: alpha(opacity=50);
