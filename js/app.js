@@ -1,32 +1,35 @@
-var dividerStyle = {
-    color: 'black',
-    display: 'block',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    margin: '0 0 0 10'
-};
+var Tags = React.createClass({
+    render: function() {
+        var tags = this.props.tags || [],
+            tagString = '';
+        if (tags.length == 0)
+            tagString = 'No tags';
+        else
+            tagString = tags.join(', ');
+        return (
+            <div className="tag">
+                Tags: {tagString}
+            </div>
+        );
+    }
+})
 
 var Badge = React.createClass({
     render: function() {
         var badgeObj = this.props.badge;
         return (
             <div className="badgeItem">
-            <div>
-            <a href={badgeObj.link}>
-            <img src={badgeObj.URL} alt={badgeObj.title} />
-            </a>
-            </div>
-            <div style={{padding:'8px'}}></div>
-            <div>
-            <h3>{badgeObj.name}</h3>
-            <p>{badgeObj.comment}</p>
-            </div>
-            <div>
-            <p style={{fontStyle:'italic'}}>
-            Tags: {badgeObj.category_tags}
-            </p>
-            </div>
-            <div style={dividerStyle}></div>
+                <div className="block">
+                    <a href={badgeObj.link}>
+                        <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
+                    </a>
+                </div>
+                <Tags tags={badgeObj.category_tags} />
+                <div className="block">
+                    <h3>{badgeObj.name}</h3>
+                    <p>{badgeObj.comment}</p>
+                </div>
+                <div className="divider"></div>
             </div>
         );
     }
@@ -34,11 +37,15 @@ var Badge = React.createClass({
 
 var BadgeList = React.createClass({
     render: function() {
-        var badgeNodes = this.props.data.map(function(badge, index) {
-            return (
-                <Badge badge={badge} key={index}></Badge> 
-            );
-        });
+        var badgeNodes = [];
+        this.props.badges.forEach(function (badge) {
+            var regexFilter = new RegExp(this.props.filterText, 'i');
+            if (!this.props.filterText || regexFilter.test(badge.name) || regexFilter.test(badge.title) || regexFilter.test(badge.comment) || regexFilter.test(badge.category_tags)) {
+                if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1))
+                    badgeNodes.push(<Badge badge={badge} key={badge.id} />
+                                   );
+            }
+        }, this);
         return (
             <div className="badgeList">
             {badgeNodes}
@@ -47,7 +54,38 @@ var BadgeList = React.createClass({
     }
 });
 
-var BadgeContainer = React.createClass({
+var NavBar = React.createClass({
+    handleChange: function() {
+        this.props.onUserInput(
+            this.refs.filterTextInput.getDOMNode().value,
+            this.refs.currentOnlyInput.getDOMNode().checked
+        );
+    },
+    render: function () {
+        return (
+            <header>
+                <div className="navbar">
+                <ul>
+                    <li className="links">
+            <a className="starmen" href="http://starmen.net"><img src="img/logo-starmen.png" alt="Starmen.net"/></a>
+                    </li>
+                    <li className="links">
+                        <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github"></i></a>
+            </li>
+                    <li className="search">
+                        <input className="filterEntry" type="text" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
+                        <input className="currentCheck" type="checkbox" checked={this.props.currentOnly} ref="currentOnlyInput" onChange={this.handleChange} id="currentOnlyInput" />
+                        {' '}
+                        <label className="currentCheck" for="currentOnlyInput">Currently available only</label>
+                    </li>
+                </ul>
+            </div>
+            </header>
+        );
+    }
+});
+
+var Guide = React.createClass({
     loadBadges: function() {
         $.ajax({
             url: this.props.url,
@@ -60,22 +98,18 @@ var BadgeContainer = React.createClass({
                 while(i < len)
                 {
                     var b = data[i]
-                    if (b.name && b.URL)
+                    if (b.name && b.URL) {
+                        if (b.updated_at)
+                            b.updated_at = Date.parse(b.updated_at);
+                        if (b.created_at)
+                            b.created_at = Date.parse(b.created_at);
                         badges.push(b);
+                    }
                     i++;
                 }
                 badges.sort(function (badgeA, badgeB) {
-                    if (badgeA.updated_at) {
-                        badgeA.updated_at = Date.parse(badgeA.updated_at);
-                    }
-                    if (badgeB.updated_at) {
-                        badgeB.updated_at = Date.parse(badgeB.updated_at);
-                    }
-                    if (badgeA.created_at && badgeB.created_at) {
-                        badgeA.created_at = Date.parse(badgeA.created_at);
-                        badgeB.created_at = Date.parse(badgeB.created_at);
-                        return badgeB.created_at - badgeB.created_at;
-                    }
+                    if (badgeA.created_at > badgeB.created_at) return -1;
+                    if (badgeB.created_at < badgeB.created_at) return 1;
                     return 0;
                 });
                 this.setState({data: badges});
@@ -86,22 +120,33 @@ var BadgeContainer = React.createClass({
         });
     },
     getInitialState: function() {
-        return {data: []};
+        return {
+            data: [],
+            filterText: '',
+            currentOnly: false
+        };
     },
     componentDidMount: function() {
         this.loadBadges();
     },
+    handleUserInput: function(filterText, currentOnly) {
+        this.setState({
+            filterText: filterText,
+            currentOnly: currentOnly
+        });
+    },
     render: function () {
         return (
-            <div className="badgeContainer">
-            <BadgeList data={this.state.data} />
+            <div>
+            <NavBar filterText={this.state.filterText} currentOnly={this.state.currentOnly} onUserInput={this.handleUserInput} />
+            <BadgeList badges={this.state.data} filterText={this.state.filterText} currentOnly={this.state.currentOnly} />
             </div>
         );
     }
 });
 
 React.render(
-    <BadgeContainer url="js/badges.json" />,
+    <Guide url="js/badges.json" />,
     document.getElementById('content')
 );
 
