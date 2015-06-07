@@ -8,7 +8,7 @@ var Tags = React.createClass({
             tagString = tags.join(', ');
         return (
             <div className="tag">
-                Tags: {tagString}
+            Tags: {tagString}
             </div>
         );
     }
@@ -19,17 +19,17 @@ var Badge = React.createClass({
         var badgeObj = this.props.badge;
         return (
             <div className="badgeItem">
-                <div className="block">
-                    <a href={badgeObj.link}>
-                        <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
-                    </a>
-                </div>
-                <Tags tags={badgeObj.category_tags} />
-                <div className="block">
-                    <h3>{badgeObj.name}</h3>
-                    <p>{badgeObj.comment}</p>
-                </div>
-                <div className="divider"></div>
+            <div className="block">
+            <a href={badgeObj.link}>
+            <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
+            </a>
+            </div>
+            <Tags tags={badgeObj.category_tags} />
+            <div className="block">
+            <h3>{badgeObj.name}</h3>
+            <p>{badgeObj.comment}</p>
+            </div>
+            <div className="divider"></div>
             </div>
         );
     }
@@ -64,21 +64,21 @@ var NavBar = React.createClass({
     render: function () {
         return (
             <header>
-                <div className="navbar">
-                <ul>
-                    <li className="links">
+            <div className="navbar">
+            <ul>
+            <li className="links">
             <a className="starmen" href="http://starmen.net"><img src="img/logo-starmen.png" alt="Starmen.net"/></a>
-                    </li>
-                    <li className="links">
-                        <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github"></i></a>
             </li>
-                    <li className="search">
-                        <input className="filterEntry" type="text" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
-                        <input className="currentCheck" type="checkbox" checked={this.props.currentOnly} ref="currentOnlyInput" onChange={this.handleChange} id="currentOnlyInput" />
-                        {' '}
-                        <label className="currentCheck" for="currentOnlyInput">Currently available only</label>
-                    </li>
-                </ul>
+            <li className="links">
+            <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github"></i></a>
+            </li>
+            <li className="search">
+            <input className="filterEntry" type="text" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
+            <input className="currentCheck" type="checkbox" checked={this.props.currentOnly} ref="currentOnlyInput" onChange={this.handleChange} id="currentOnlyInput" />
+            {' '}
+            <label className="currentCheck" for="currentOnlyInput">Currently available only</label>
+            </li>
+            </ul>
             </div>
             </header>
         );
@@ -86,11 +86,38 @@ var NavBar = React.createClass({
 });
 
 var Guide = React.createClass({
+    loadFilter: function() {
+        $.ajax({
+            url: this.props.filterUrl,
+            dataType: 'json',
+            cache: true,
+            success: function(data) {
+                if (data.filtered_badges === undefined)
+                    return;
+                var i = 0,
+                    len = data.filtered_badges.length,
+                    filters = [];
+                while (i < len)
+                {
+                    var f = data.filtered_badges[i];
+                    console.log(f);
+                    if (f !== undefined)
+                        filters.push(f);
+                    i++;
+                }
+                filters.sort();
+                this.setState({filter:filters});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
     loadBadges: function() {
         $.ajax({
-            url: this.props.url,
+            url: this.props.badgeUrl,
             dataType: 'json',
-            cache: false,
+            cache: true,
             success: function(data) {
                 var i = 0, 
                     len = data.length, 
@@ -98,7 +125,7 @@ var Guide = React.createClass({
                 while(i < len)
                 {
                     var b = data[i]
-                    if (b.name && b.URL) {
+                    if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
                         if (b.updated_at)
                             b.updated_at = Date.parse(b.updated_at);
                         if (b.created_at)
@@ -122,11 +149,13 @@ var Guide = React.createClass({
     getInitialState: function() {
         return {
             data: [],
+            filter: [],
             filterText: '',
             currentOnly: false
         };
     },
     componentDidMount: function() {
+        this.loadFilter();
         this.loadBadges();
     },
     handleUserInput: function(filterText, currentOnly) {
@@ -146,7 +175,7 @@ var Guide = React.createClass({
 });
 
 React.render(
-    <Guide url="js/badges.json" />,
+    <Guide badgeUrl="js/badges.json" filterUrl="js/filter.json" />,
     document.getElementById('content')
 );
 
