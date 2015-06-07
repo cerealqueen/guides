@@ -40,6 +40,12 @@ var Badge = React.createClass({
 var BadgeList = React.createClass({
     render: function() {
         var badgeNodes = [];
+        this.props.badges.sort(function (badgeA, badgeB) {
+            if (this.props.isDescending)
+                return badgeB.created_at - badgeA.created_at;
+            else
+                return badgeA.created_at - badgeB.created_at;
+        }.bind(this));
         this.props.badges.forEach(function (badge) {
             var regexFilter = new RegExp(this.props.filterText, 'i');
             if (!this.props.filterText || regexFilter.test(badge.name) || regexFilter.test(badge.title) || regexFilter.test(badge.comment) || regexFilter.test(badge.category_tags)) {
@@ -130,8 +136,11 @@ var Guide = React.createClass({
                     i++;
                 }
                 badges.sort(function (badgeA, badgeB) {
-                    return badgeB.created_at - badgeA.created_at;
-                });
+                    if (this.state.isDescending)
+                        return badgeB.created_at - badgeA.created_at;
+                    else
+                        return badgeA.created_at - badgeB.created_at;
+                }.bind(this));
                 this.setState({data: badges});
             }.bind(this),
             error: function(xhr, status, err) {
@@ -144,12 +153,27 @@ var Guide = React.createClass({
             data: [],
             filter: [],
             filterText: '',
-            currentOnly: false
+            currentOnly: false,
+            isDescending: true
         };
     },
     componentDidMount: function() {
         this.loadFilter();
         this.loadBadges();
+        $('.sortList').click(function() {
+            $(this).find('i').toggleClass ('fa-rotate-90');
+            $(this).find('ul').slideToggle();
+        });
+        $('.directions').hide();
+        $('.direction').click(function() {
+            var isDescending = true;
+            if ($(this).hasClass('asc')) {
+                isDescending = false;
+            } else if ($(this).hasClass('desc')) {
+                isDescending = true;
+            }
+            this.setState({isDescending: isDescending});
+        }.bind(this));
     },
     handleUserInput: function(filterText, currentOnly) {
         this.setState({
@@ -161,7 +185,15 @@ var Guide = React.createClass({
         return (
             <div>
             <NavBar filterText={this.state.filterText} currentOnly={this.state.currentOnly} onUserInput={this.handleUserInput} />
-            <BadgeList badges={this.state.data} filterText={this.state.filterText} currentOnly={this.state.currentOnly} />
+            <ul className="sortContainer">
+            <li className="sortList"><i className="fa fa-caret-right"></i> Sort
+            <ul className="directions">
+            <li className="direction asc">Ascending</li>
+            <li className="direction desc">Descending</li>
+            </ul>
+            </li>
+            </ul>
+            <BadgeList badges={this.state.data} filterText={this.state.filterText} currentOnly={this.state.currentOnly} isDescending={this.state.isDescending} />
             </div>
         );
     }

@@ -155,6 +155,26 @@ input::-webkit-input-placeholder {
     color: white;
 }
 
+.sortContainer {
+    margin: 10px;
+    width:25%;
+}
+
+.direction {
+    text-indent: 2em;
+    color: #2b578b;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.direction:hover {
+    color:#c6d2e0;
+}
+
+.direction:active {
+    color:#6dcff6;
+}
+
 .badgeContainer {
     width:80%;
     margin: 1em auto;
