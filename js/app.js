@@ -130,9 +130,7 @@ var Guide = React.createClass({
                     i++;
                 }
                 badges.sort(function (badgeA, badgeB) {
-                    if (badgeA.created_at > badgeB.created_at) return -1;
-                    if (badgeB.created_at < badgeB.created_at) return 1;
-                    return 0;
+                    return badgeB.created_at - badgeA.created_at;
                 });
                 this.setState({data: badges});
             }.bind(this),
