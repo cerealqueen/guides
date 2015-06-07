@@ -20,7 +20,7 @@ var Badge = React.createClass({
         return (
             <div className="badgeContainer">
             <div className="badgeItem">
-            <div className="block">
+            <div className="badgeImgContainer">
             <a href={badgeObj.link}>
             <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
             </a>
@@ -59,8 +59,7 @@ var BadgeList = React.createClass({
 var NavBar = React.createClass({
     handleChange: function() {
         this.props.onUserInput(
-            this.refs.filterTextInput.getDOMNode().value,
-            this.refs.currentOnlyInput.getDOMNode().checked
+            this.refs.filterTextInput.getDOMNode().value
         );
     },
     render: function () {
@@ -69,13 +68,10 @@ var NavBar = React.createClass({
             <div className="navbar">
             <ul>
             <li className="links">
-            <a className="starmen" href="http://starmen.net"><img src="img/logo-starmen.png" alt="Starmen.net"/></a>
+            <a className="starmen" href="http://starmen.net"><img src="http://local-static3.forum-files.fobby.net/forum_attachments/0030/1383/chompy_mod.gif" alt="Starmen.net"/></a>
             </li>
             <li className="search">
-            <input className="filterEntry" type="text" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
-            <input className="currentCheck" type="checkbox" checked={this.props.currentOnly} ref="currentOnlyInput" onChange={this.handleChange} id="currentOnlyInput" />
-            {' '}
-            <label className="currentCheck" for="currentOnlyInput">Currently available only</label>
+            <input type="search" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
             </li>
             </ul>
             <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github fa-2x"></i></a>
@@ -100,7 +96,6 @@ var Guide = React.createClass({
                 while (i < len)
                 {
                     var f = data.filtered_badges[i];
-                    console.log(f);
                     if (f !== undefined)
                         filters.push(f);
                     i++;
