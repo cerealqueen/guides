@@ -20,11 +20,15 @@ var Badge = React.createClass({
         var thisYear = new Date(badgeObj.created_at).getFullYear();
         var lastYear = new Date(this.props.lastDate).getFullYear();
         var dividerClassList = 'divider';
-        var newYear = thisYear !== lastYear;
-        if (newYear)
+        var isNewYear = thisYear !== lastYear;
+        var newYear = '';
+        if (isNewYear) {
             dividerClassList += ' newYear';
+            newYear = this.props.isDescending ? lastYear : thisYear;
+        }
         return (
             <div>
+            <div className={dividerClassList}>{newYear}</div>
             <div className="badgeContainer">
             <div className="badgeItem">
             <div className="badgeImgContainer">
@@ -39,7 +43,6 @@ var Badge = React.createClass({
             <Tags tags={badgeObj.category_tags} />
             </div>
             </div>
-            <div className={dividerClassList}>{newYear ? lastYear : ''}</div>
             </div>
         );
     }
@@ -73,7 +76,7 @@ var BadgeList = React.createClass({
                 if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1)) {
                     var lastIndex = index - 1;
                     if (lastIndex < 0) lastIndex = 0;
-                    badgeNodes.push(<Badge badge={badge} lastDate={badges[lastIndex].created_at} key={badge.id} />
+                    badgeNodes.push(<Badge badge={badge} lastDate={badges[lastIndex].created_at} isDescending={this.state.isDescending} key={badge.id} />
                                    );
                 }
             }
