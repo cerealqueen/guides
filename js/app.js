@@ -17,7 +17,14 @@ var Tags = React.createClass({
 var Badge = React.createClass({
     render: function() {
         var badgeObj = this.props.badge;
+        var thisYear = new Date(badgeObj.created_at).getFullYear();
+        var lastYear = new Date(this.props.lastDate).getFullYear();
+        var dividerClassList = 'divider';
+        var newYear = thisYear !== lastYear;
+        if (newYear)
+            dividerClassList += ' newYear';
         return (
+            <div>
             <div className="badgeContainer">
             <div className="badgeItem">
             <div className="badgeImgContainer">
@@ -30,27 +37,59 @@ var Badge = React.createClass({
             <p>{badgeObj.comment}</p>
             </div>
             <Tags tags={badgeObj.category_tags} />
-            <div className="divider"></div>
             </div>
+            </div>
+            <div className={dividerClassList}>{newYear ? lastYear : ''}</div>
             </div>
         );
     }
 });
 
 var BadgeList = React.createClass({
+    componentDidMount: function () {
+
+    },
+    getInitialState: function() {
+        return {
+            isDescending: true
+        };
+    },
+    handleDirection: function(e) {
+        console.log(this);
+        this.setState({isDescending: !this.state.isDescending || false});
+        
+    },
     render: function() {
         var badgeNodes = [];
-        this.props.badges.forEach(function (badge) {
+        this.props.badges.sort(function (badgeA, badgeB) {
+            if (this.state.isDescending)
+                return badgeB.created_at - badgeA.created_at;
+            else
+                return badgeA.created_at - badgeB.created_at;
+        }.bind(this));
+        this.props.badges.forEach(function (badge, index, badges) {
             var regexFilter = new RegExp(this.props.filterText, 'i');
             if (!this.props.filterText || regexFilter.test(badge.name) || regexFilter.test(badge.title) || regexFilter.test(badge.comment) || regexFilter.test(badge.category_tags)) {
-                if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1))
-                    badgeNodes.push(<Badge badge={badge} key={badge.id} />
+                if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1)) {
+                    var lastIndex = index - 1;
+                    if (lastIndex < 0) lastIndex = 0;
+                    badgeNodes.push(<Badge badge={badge} lastDate={badges[lastIndex].created_at} key={badge.id} />
                                    );
+                }
             }
         }, this);
+        var directionIcon = 'fa ' + (this.state.isDescending ? 'fa-caret-down' : 'fa-caret-up');
         return (
+            <div>
+            <div className="sortContainer">
+            By Creation Date:
+            <div className="direction" onClick={this.handleDirection}>
+            <i className={directionIcon} /> {this.state.isDescending ? 'Descending' : 'Ascending'}
+            </div>
+            </div>
             <div className="badgeList">
             {badgeNodes}
+            </div>
             </div>
         );
     }
@@ -129,9 +168,6 @@ var Guide = React.createClass({
                     }
                     i++;
                 }
-                badges.sort(function (badgeA, badgeB) {
-                    return badgeB.created_at - badgeA.created_at;
-                });
                 this.setState({data: badges});
             }.bind(this),
             error: function(xhr, status, err) {

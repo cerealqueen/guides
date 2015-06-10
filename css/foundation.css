@@ -68,7 +68,7 @@ input[type=search] {
     font-family: inherit;
     font-size: 100%;
 }
-input::-webkit-search-decoratoin,
+input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
     display: none;
 }
