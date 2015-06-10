@@ -12,7 +12,23 @@ var Tags = React.createClass({
             </div>
         );
     }
-})
+});
+
+var BadgeImg = React.createClass({
+    render: function() {
+        var imgContainer = undefined;
+        if (this.props.link) {
+            imgContainer = <a href={this.props.link}><img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" /></a>
+        } else {
+            imgContainer = <img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" />
+        }
+        return (
+            <div className="badgeImgContainer">
+            {imgContainer}
+            </div>
+        );
+    }
+});
 
 var Badge = React.createClass({
     render: function() {
@@ -33,11 +49,7 @@ var Badge = React.createClass({
             <div className={dividerClassList}>{newYear}</div>
             <div className="badgeContainer">
             <div className="badgeItem">
-            <div className="badgeImgContainer">
-            <a href={badgeObj.link}>
-            <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
-            </a>
-            </div>
+            <BadgeImg link={badgeObj.link} url={badgeObj.URL} title={badgeObj.title} />
             <div className="block">
             <h3>{badgeObj.name}</h3>
             <p>{badgeObj.comment}</p>
