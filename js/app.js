@@ -17,10 +17,12 @@ var Tags = React.createClass({
 var Badge = React.createClass({
     render: function() {
         var badgeObj = this.props.badge;
-        var thisYear = new Date(badgeObj.created_at).getFullYear();
-        var lastYear = new Date(this.props.lastDate).getFullYear();
+        var thisYear = badgeObj.created_at.getFullYear();
+        var lastYear = undefined;
+        if (this.props.lastDate)
+            lastYear = this.props.lastDate.getFullYear();
         var dividerClassList = 'divider';
-        var isNewYear = thisYear !== lastYear;
+        var isNewYear = lastYear && thisYear !== lastYear;
         var newYear = '';
         if (isNewYear) {
             dividerClassList += ' newYear';
@@ -72,11 +74,20 @@ var BadgeList = React.createClass({
         }.bind(this));
         this.props.badges.forEach(function (badge, index, badges) {
             var regexFilter = new RegExp(this.props.filterText, 'i');
-            if (!this.props.filterText || regexFilter.test(badge.name) || regexFilter.test(badge.title) || regexFilter.test(badge.comment) || regexFilter.test(badge.category_tags)) {
+            if (!this.props.filterText || 
+                regexFilter.test(badge.name) || 
+                regexFilter.test(badge.title) || 
+                regexFilter.test(badge.comment) || 
+                regexFilter.test(badge.category_tags) ||
+                regexFilter.test(badge.created_at.getFullYear())) {
                 if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1)) {
-                    var lastIndex = index - 1;
-                    if (lastIndex < 0) lastIndex = 0;
-                    badgeNodes.push(<Badge badge={badge} lastDate={badges[lastIndex].created_at} isDescending={this.state.isDescending} key={badge.id} />
+                    var lastBadge = undefined;
+                    if (badgeNodes.length > 0) {
+                        var lastIndex = index - 1;
+                        if (lastIndex < 0) lastIndex = 0;
+                        lastBadge = badges[lastIndex].created_at;
+                    }
+                    badgeNodes.push(<Badge badge={badge} lastDate={lastBadge} isDescending={this.state.isDescending} key={badge.id} />
                                    );
                 }
             }
@@ -164,9 +175,9 @@ var Guide = React.createClass({
                     var b = data[i]
                     if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
                         if (b.updated_at)
-                            b.updated_at = Date.parse(b.updated_at);
+                            b.updated_at = new Date(b.updated_at);
                         if (b.created_at)
-                            b.created_at = Date.parse(b.created_at);
+                            b.created_at = new Date(b.created_at);
                         badges.push(b);
                     }
                     i++;
