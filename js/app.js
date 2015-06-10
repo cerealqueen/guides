@@ -125,7 +125,7 @@ var Guide = React.createClass({
         $.ajax({
             url: this.props.filterUrl,
             dataType: 'json',
-            cache: true,
+            cache: false,
             success: function(data) {
                 if (data.filtered_badges === undefined)
                     return;
@@ -151,7 +151,7 @@ var Guide = React.createClass({
         $.ajax({
             url: this.props.badgeUrl,
             dataType: 'json',
-            cache: true,
+            cache: false,
             success: function(data) {
                 var i = 0, 
                     len = data.length, 
