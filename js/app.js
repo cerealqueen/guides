@@ -17,10 +17,17 @@ var Tags = React.createClass({
 var Badge = React.createClass({
     render: function() {
         var badgeObj = this.props.badge;
+        var thisYear = new Date(badgeObj.created_at).getFullYear();
+        var lastYear = new Date(this.props.lastDate).getFullYear();
+        var dividerClassList = 'divider';
+        var newYear = thisYear !== lastYear;
+        if (newYear)
+            dividerClassList += ' newYear';
         return (
+            <div>
             <div className="badgeContainer">
             <div className="badgeItem">
-            <div className="block">
+            <div className="badgeImgContainer">
             <a href={badgeObj.link}>
             <img className="badgeImg" src={badgeObj.URL} alt={badgeObj.title} onload="this.style.opacity='1';" />
             </a>
@@ -30,27 +37,59 @@ var Badge = React.createClass({
             <p>{badgeObj.comment}</p>
             </div>
             <Tags tags={badgeObj.category_tags} />
-            <div className="divider"></div>
             </div>
+            </div>
+            <div className={dividerClassList}>{newYear ? lastYear : ''}</div>
             </div>
         );
     }
 });
 
 var BadgeList = React.createClass({
+    componentDidMount: function () {
+
+    },
+    getInitialState: function() {
+        return {
+            isDescending: true
+        };
+    },
+    handleDirection: function(e) {
+        console.log(this);
+        this.setState({isDescending: !this.state.isDescending || false});
+        
+    },
     render: function() {
         var badgeNodes = [];
-        this.props.badges.forEach(function (badge) {
+        this.props.badges.sort(function (badgeA, badgeB) {
+            if (this.state.isDescending)
+                return badgeB.created_at - badgeA.created_at;
+            else
+                return badgeA.created_at - badgeB.created_at;
+        }.bind(this));
+        this.props.badges.forEach(function (badge, index, badges) {
             var regexFilter = new RegExp(this.props.filterText, 'i');
             if (!this.props.filterText || regexFilter.test(badge.name) || regexFilter.test(badge.title) || regexFilter.test(badge.comment) || regexFilter.test(badge.category_tags)) {
-                if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1))
-                    badgeNodes.push(<Badge badge={badge} key={badge.id} />
+                if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1)) {
+                    var lastIndex = index - 1;
+                    if (lastIndex < 0) lastIndex = 0;
+                    badgeNodes.push(<Badge badge={badge} lastDate={badges[lastIndex].created_at} key={badge.id} />
                                    );
+                }
             }
         }, this);
+        var directionIcon = 'fa ' + (this.state.isDescending ? 'fa-caret-down' : 'fa-caret-up');
         return (
+            <div>
+            <div className="sortContainer">
+            By Creation Date:
+            <div className="direction" onClick={this.handleDirection}>
+            <i className={directionIcon} /> {this.state.isDescending ? 'Descending' : 'Ascending'}
+            </div>
+            </div>
             <div className="badgeList">
             {badgeNodes}
+            </div>
             </div>
         );
     }
@@ -59,8 +98,7 @@ var BadgeList = React.createClass({
 var NavBar = React.createClass({
     handleChange: function() {
         this.props.onUserInput(
-            this.refs.filterTextInput.getDOMNode().value,
-            this.refs.currentOnlyInput.getDOMNode().checked
+            this.refs.filterTextInput.getDOMNode().value
         );
     },
     render: function () {
@@ -69,13 +107,10 @@ var NavBar = React.createClass({
             <div className="navbar">
             <ul>
             <li className="links">
-            <a className="starmen" href="http://starmen.net"><img src="img/logo-starmen.png" alt="Starmen.net"/></a>
+            <a className="starmen" href="http://starmen.net"><img src="http://local-static3.forum-files.fobby.net/forum_attachments/0030/1383/chompy_mod.gif" alt="Starmen.net"/></a>
             </li>
             <li className="search">
-            <input className="filterEntry" type="text" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
-            <input className="currentCheck" type="checkbox" checked={this.props.currentOnly} ref="currentOnlyInput" onChange={this.handleChange} id="currentOnlyInput" />
-            {' '}
-            <label className="currentCheck" for="currentOnlyInput">Currently available only</label>
+            <input type="search" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
             </li>
             </ul>
             <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github fa-2x"></i></a>
@@ -100,7 +135,6 @@ var Guide = React.createClass({
                 while (i < len)
                 {
                     var f = data.filtered_badges[i];
-                    console.log(f);
                     if (f !== undefined)
                         filters.push(f);
                     i++;
@@ -134,11 +168,6 @@ var Guide = React.createClass({
                     }
                     i++;
                 }
-                badges.sort(function (badgeA, badgeB) {
-                    if (badgeA.created_at > badgeB.created_at) return -1;
-                    if (badgeB.created_at < badgeB.created_at) return 1;
-                    return 0;
-                });
                 this.setState({data: badges});
             }.bind(this),
             error: function(xhr, status, err) {
@@ -178,60 +207,3 @@ React.render(
     <Guide badgeUrl="js/badges.json" filterUrl="js/filter.json" />,
     document.getElementById('content')
 );
-
-
-
-
-//(function (angular) {
-//	'use strict';
-//	
-//	var app = angular.module('BadgeGuideApp', ['ngRoute', 'ngMaterial', 'ngAnimate']);
-//
-//	app.factory('LoadBadges', function ($http) {
-//		return $http.get('js/badges.json');
-//	});
-//
-//	app.controller('badgesController', ['$scope', '$mdSidenav', 'LoadBadges', function ($scope, $mdSidenav, LoadBadges) {
-//		$scope.searchText = null;
-//		$scope.forumsUrl = 'http://forum.starmen.net/forum';
-//		$scope.doneloading = false;
-//		
-//		//Initialize data
-//		$scope.badgeList = [];
-//		LoadBadges.success(function (data) {
-//			for (var i = 0; i < data.length; i++)
-//			{
-//				$scope.badgeList.push(data[i]);
-//			}
-//			$scope.doneloading = true;
-//		}).error(function (data, status, error, config) {
-//			$scope.badgeList.push({
-//				id:0,
-//				name:error,
-//				URL:"http://starmen.net/badgevatars/avatars/rofishspy.png",
-//				comment:config,
-//				title_tag:"",
-//				link:"",
-//				created_at:"",
-//				updated_at:""
-//			});
-//		});
-//
-//		// Filters
-//		$scope.badgeFilter = function (badge) {
-//			return (badge.name && badge.URL);
-//		};
-//		$scope.searchFilter = function (badge) {
-//			var keyword = new RegExp($scope.searchText, 'i');
-//			return !$scope.searchText || keyword.test(badge.name) || keyword.test(badge.title) || keyword.test(badge.comment) || keyword.test(badge.category_tags);
-//		};
-//		$scope.dateFilter = function (badge) {
-//			return parseInt(badge.created_at);
-//		};
-//
-//		//Controls
-//		/*$scope.toggleSidenav = function(menuId) {
-//			$mdSidenav(menuId).toggle();
-//		};*/
-//	}]);
-//}(window.angular));
