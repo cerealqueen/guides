@@ -82,7 +82,7 @@ var BadgeList = React.createClass({
                 regexFilter.test(badge.created_at.getFullYear())) {
                 if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1)) {
                     var lastBadge = undefined;
-                    if (badgeNodes.length > 0) {
+                    if (badgeNodes.length > 0 && this.props.filterText) {
                         var lastIndex = index - 1;
                         if (lastIndex < 0) lastIndex = 0;
                         lastBadge = badges[lastIndex].created_at;
