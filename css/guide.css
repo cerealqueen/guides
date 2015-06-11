@@ -1,11 +1,12 @@
 html {
-    background-color: #FDF9F3;
+    background-color: #001835;
+    color: #98a8bc;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: helvetica,verdana,"microsoft sans serif",arial,sans-serif;
 }
 
 h3 {
@@ -160,10 +161,15 @@ input::-webkit-input-placeholder {
     color: white;
 }
 
+.loading {
+    margin: 1em auto;
+    text-align: center;
+}
+
 .sortContainer {
     margin: 1em auto;
     width:80%;
-    color: #2b578b;
+    color: #a4eda9;
     font-weight: bold;
     text-align: right;
 }
@@ -175,11 +181,11 @@ input::-webkit-input-placeholder {
 }
 
 .direction:hover {
-    color:#c6d2e0;
+    color:#bbffc0;
 }
 
 .direction:active {
-    color:#6dcff6;
+    color:#ddffcc;
 }
 
 .badgeContainer {
@@ -187,10 +193,11 @@ input::-webkit-input-placeholder {
     margin: 1em auto;
     border-style: solid;
     border-width: 2px;
-    border-color: #cfcfcf;
-    -webkit-box-shadow: 0 0 10px #dbdbdb;
-    -moz-box-shadow: 0 0 10px #dbdbdb;
-    box-shadow: 0 0 10px #dbdbdb;
+    border-color: #113662;
+    -webkit-box-shadow: 0 0 10px #113662;
+    -moz-box-shadow: 0 0 10px #113662;
+    box-shadow: 0 0 10px #113662;
+    background-color: #001228;
 }
 
 .badgeItem {
@@ -229,6 +236,7 @@ input::-webkit-input-placeholder {
     border-top-style: solid;
     /* top right bottom left */
     margin: 0px 7% 0px 7%;
+    opacity: 0.8;
 }
 
 .newYear {
