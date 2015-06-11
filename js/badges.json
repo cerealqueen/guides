@@ -218,7 +218,8 @@
             "link": "http://starmen.net/donation.php",
             "created_at": "2008-07-06 13:18:53",
             "updated_at": "2010-10-19 17:14:14",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 1
         },
         {
             "id": 23,
@@ -229,7 +230,8 @@
             "link": "http://starmen.net/donation.php",
             "created_at": "2008-07-06 13:19:43",
             "updated_at": "2010-10-19 17:14:23",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 1
         },
         {
             "id": 24,
@@ -240,7 +242,8 @@
             "link": "http://starmen.net/donation.php",
             "created_at": "2008-07-06 13:20:21",
             "updated_at": "2010-10-19 17:14:34",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 1
         },
         {
             "id": 25,
@@ -251,7 +254,8 @@
             "link": "http://starmen.net/donation.php",
             "created_at": "2008-07-06 13:20:44",
             "updated_at": "2010-10-19 17:14:47",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 1
         },
         {
             "id": 26,
@@ -262,7 +266,8 @@
             "link": "http://starmen.net/donation.php",
             "created_at": "2008-07-06 13:21:19",
             "updated_at": "2010-10-19 17:14:58",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 1
         },
         {
             "id": 27,
@@ -581,7 +586,8 @@
             "link": "",
             "created_at": "2008-07-06 13:35:12",
             "updated_at": "2008-07-06 13:35:12",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 2
         },
         {
             "id": 56,
@@ -592,7 +598,8 @@
             "link": "",
             "created_at": "2008-07-06 13:35:36",
             "updated_at": "2008-07-06 13:35:36",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 2
         },
         {
             "id": 57,
@@ -603,7 +610,8 @@
             "link": "",
             "created_at": "2008-07-06 13:35:57",
             "updated_at": "2008-07-06 13:35:57",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 2
         },
         {
             "id": 58,
@@ -2517,7 +2525,8 @@
             "link": "",
             "created_at": "2011-09-16 20:19:04",
             "updated_at": "2011-10-29 19:40:33",
-            "category_tags": ["current"]
+            "category_tags": ["current"],
+            "group_id": 2
         },
         {
             "id": 232,
@@ -4997,13 +5006,13 @@
     ],
     "groups":[
         {
+            "id":1,
             "name":"donor",
-            "badge_ids":[22, 23, 24, 25, 26],
             "title":"Donation badges"
         },
         {
+            "id":2,
             "name":"fanvatar",
-            "badge_ids":[55, 56, 57, 231],
             "title":"Fanvatar badges"
         }
     ],

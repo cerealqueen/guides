@@ -30,9 +30,22 @@ var BadgeImg = React.createClass({
     }
 });
 
+var BadgeInfo = React.createClass({
+    render: function () {
+        return (
+            <div className="block">
+            <h3>{this.props.name}</h3>
+            <p>{this.props.comment}</p>
+            </div>
+        );
+    }
+});
+
 var Badge = React.createClass({
+    addBadge: function () {
+    },
     render: function() {
-        var badgeObj = this.props.badge;
+        var badgeObj = this.props.badges;
         var thisYear = badgeObj.created_at.getFullYear();
         var lastYear = undefined;
         if (this.props.lastDate)
@@ -50,10 +63,7 @@ var Badge = React.createClass({
             <div className="badgeContainer">
             <div className="badgeItem">
             <BadgeImg link={badgeObj.link} url={badgeObj.URL} title={badgeObj.title} />
-            <div className="block">
-            <h3>{badgeObj.name}</h3>
-            <p>{badgeObj.comment}</p>
-            </div>
+            <BadgeInfo name={badgeObj.name} comment={badgeObj.comment} />
             <Tags tags={badgeObj.category_tags} />
             </div>
             </div>
@@ -127,9 +137,7 @@ var BadgeList = React.createClass({
 
 var NavBar = React.createClass({
     handleChange: function() {
-        this.props.onUserInput(
-            this.refs.filterTextInput.getDOMNode().value
-        );
+        this.props.onUserInput(this.refs.filterTextInput.getDOMNode().value);
     },
     render: function () {
         return (
@@ -158,7 +166,6 @@ var Guide = React.createClass({
             cache: true,
             success: function(data) {
                 this.loadFilters(data.filtered_badges || []);
-                this.loadGroups(data.groups || []);
                 this.loadBadges(data.badges || []);
             }.bind(this),
             error: function(xhr, status, err) {
@@ -183,19 +190,6 @@ var Guide = React.createClass({
             i++;
         }
         this.setState({data: badges});
-    },
-    loadGroups: function(data) {
-        var len = data.length,
-            i = 0,
-            groups = [];
-        while (i < len) 
-        {
-            var g = data[i];
-            if (g.badge_ids && g.badge_ids.length > 0)
-                groups.push(g);
-            i++;
-        }
-        this.setState({groups: groups});
     },
     loadFilters: function(data) {
         if (data === undefined)
@@ -231,12 +225,12 @@ var Guide = React.createClass({
         });
     },
     render: function () {
-        if (this.state.data && this.state.groups)
+        if (this.state.data)
         {
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
-                <BadgeList badges={this.state.data} groups={this.state.groups}  filterText={this.state.filterText} />
+                <BadgeList badges={this.state.data} filterText={this.state.filterText} />
                 </div>
             );
         } else {

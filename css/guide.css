@@ -198,6 +198,10 @@ input::-webkit-input-placeholder {
     -moz-box-shadow: 0 0 10px #113662;
     box-shadow: 0 0 10px #113662;
     background-color: #001228;
+    -webkit-animation: light-bounce 0.35s ease-out;
+    -moz-animation: light-bounce 0.35s ease-out;
+    -o-animation: light-bounce 0.35s ease-out;
+    animation: light-bounce 0.35s ease-out;
 }
 
 .badgeItem {
@@ -262,6 +266,20 @@ input::-webkit-input-placeholder {
     }
 }
 
+@-webkit-keyframes light-bounce {
+    0% {
+        -webkit-transform:scale(0.8);
+    }
+    33% {
+        -webkit-transform:scale(1.1);
+    }
+    66% {
+        -webkit-transform:scale(0.9);
+    }
+    100% {
+        -webkit-transform:scale(1);
+    }
+}
 
 /*0.05, 1.1, 0.9, 1*/
 @-moz-keyframes bounce {
@@ -279,6 +297,20 @@ input::-webkit-input-placeholder {
     }
 }
 
+@-moz-keyframes light-bounce {
+    0% {
+        -webkit-transform:scale(0.8);
+    }
+    33% {
+        -webkit-transform:scale(1.1);
+    }
+    66% {
+        -webkit-transform:scale(0.9);
+    }
+    100% {
+        -webkit-transform:scale(1);
+    }
+}
 
 /*0.05, 1.1, 0.9, 1*/
 @-o-keyframes bounce {
@@ -296,11 +328,40 @@ input::-webkit-input-placeholder {
     }
 }
 
+@-o-keyframes light-bounce {
+    0% {
+        -webkit-transform:scale(0.8);
+    }
+    33% {
+        -webkit-transform:scale(1.1);
+    }
+    66% {
+        -webkit-transform:scale(0.9);
+    }
+    100% {
+        -webkit-transform:scale(1);
+    }
+}
 
 /*0.05, 1.1, 0.9, 1*/
 @keyframes bounce {
     0% {
         -webkit-transform:scale(0.05);
+    }
+    33% {
+        -webkit-transform:scale(1.1);
+    }
+    66% {
+        -webkit-transform:scale(0.9);
+    }
+    100% {
+        -webkit-transform:scale(1);
+    }
+}
+
+@keyframes light-bounce {
+    0% {
+        -webkit-transform:scale(0.8);
     }
     33% {
         -webkit-transform:scale(1.1);
