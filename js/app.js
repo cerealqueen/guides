@@ -84,7 +84,6 @@ var BadgeList = React.createClass({
                 return badgeA.created_at - badgeB.created_at;
         }.bind(this));
         this.props.badges.forEach(function (badge, index, badges) {
-
             var lastBadge = undefined;
             if (badgeNodes.length !== 0) {
                 var lastIndex = index - 1;
@@ -152,83 +151,79 @@ var NavBar = React.createClass({
 });
 
 var Guide = React.createClass({
-    loadFilter: function() {
-        $.ajax({
-            url: this.props.filterUrl,
-            dataType: 'json',
-            cache: true,
-            success: function(data) {
-                if (data.filtered_badges === undefined)
-                    return;
-                var i = 0,
-                    len = data.filtered_badges.length,
-                    filters = [];
-                while (i < len)
-                {
-                    var f = data.filtered_badges[i];
-                    if (f !== undefined)
-                        filters.push(f);
-                    i++;
-                }
-                filters.sort();
-                this.setState({filter:filters});
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
-    },
-    loadBadges: function() {
+    loadBadgeFile: function() {
         $.ajax({
             url: this.props.badgeUrl,
             dataType: 'json',
             cache: true,
             success: function(data) {
-                var i = 0, 
-                    badgeData = data.badges,
-                    groupData = data.groups,
-                    len = badgeData.length, 
-                    badges = [],
-                    groups = [];
-                while(i < len)
-                {
-                    var b = badgeData[i];
-                    if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
-                        if (b.updated_at)
-                            b.updated_at = new Date(b.updated_at.replace(/\s/, 'T'));
-                        if (b.created_at)
-                            b.created_at = new Date(b.created_at.replace(/\s/, 'T'));
-                        badges.push(b);
-                    }
-                    i++;
-                }
-                this.setState({data: badges});
-                len = groupData.length;
-                i = 0;
-                while (i < len) 
-                {
-                    var g = groupData[i];
-                    if (g.badge_ids && g.badge_ids.length > 0)
-                        groups.push(g);
-                    i++;
-                }
-                this.setState({groups: groups});
+                this.loadFilters(data.filtered_badges || []);
+                this.loadGroups(data.groups || []);
+                this.loadBadges(data.badges || []);
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
-        });
+        });   
+    },
+    loadBadges: function(data) {
+        var i = 0, 
+            len = data.length, 
+            badges = [];
+        while(i < len)
+        {
+            var b = data[i];
+            if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
+                if (b.updated_at)
+                    b.updated_at = new Date(b.updated_at.replace(/\s/, 'T'));
+                if (b.created_at)
+                    b.created_at = new Date(b.created_at.replace(/\s/, 'T'));
+                badges.push(b);
+            }
+            i++;
+        }
+        this.setState({data: badges});
+    },
+    loadGroups: function(data) {
+        var len = data.length,
+            i = 0,
+            groups = [];
+        while (i < len) 
+        {
+            var g = data[i];
+            if (g.badge_ids && g.badge_ids.length > 0)
+                groups.push(g);
+            i++;
+        }
+        this.setState({groups: groups});
+    },
+    loadFilters: function(data) {
+        if (data === undefined)
+            return;
+        var i = 0,
+            len = data.length,
+            filters = [];
+        while (i < len)
+        {
+            var f = data[i];
+            if (f && f.badge_ids && f.name && f.title) {
+                f.isPartOfGroup = function (id) {
+                    return this.badge_ids.indexOf(id) !== -1;
+                };
+                filters.push(f);
+            }
+            i++;
+        }
+        filters.sort();
+        this.setState({filter:filters});
     },
     getInitialState: function() {
         return {
-            data: [],
-            filter: [],
             filterText: ''
         };
     },
     componentDidMount: function() {
-        this.loadFilter();
-        this.loadBadges();
+        this.loadBadgeFile();
     },
     handleUserInput: function(filterText) {
         this.setState({
@@ -256,6 +251,6 @@ var Guide = React.createClass({
 });
 
 React.render(
-    <Guide badgeUrl="js/badges.json" filterUrl="js/filter.json" />,
+    <Guide badgeUrl="js/badges.json" />,
     document.getElementById('content')
 );
