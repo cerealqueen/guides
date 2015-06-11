@@ -84,7 +84,7 @@ var BadgeList = React.createClass({
                 return badgeA.created_at - badgeB.created_at;
         }.bind(this));
         this.props.badges.forEach(function (badge, index, badges) {
-            
+
             var lastBadge = undefined;
             if (badgeNodes.length !== 0) {
                 var lastIndex = index - 1;
@@ -185,11 +185,14 @@ var Guide = React.createClass({
             cache: true,
             success: function(data) {
                 var i = 0, 
-                    len = data.length, 
-                    badges = [];
+                    badgeData = data.badges,
+                    groupData = data.groups,
+                    len = badgeData.length, 
+                    badges = [],
+                    groups = [];
                 while(i < len)
                 {
-                    var b = data[i]
+                    var b = badgeData[i];
                     if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
                         if (b.updated_at)
                             b.updated_at = new Date(b.updated_at.replace(/\s/, 'T'));
@@ -200,6 +203,16 @@ var Guide = React.createClass({
                     i++;
                 }
                 this.setState({data: badges});
+                len = groupData.length;
+                i = 0;
+                while (i < len) 
+                {
+                    var g = groupData[i];
+                    if (g.badge_ids && g.badge_ids.length > 0)
+                        groups.push(g);
+                    i++;
+                }
+                this.setState({groups: groups});
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -223,19 +236,19 @@ var Guide = React.createClass({
         });
     },
     render: function () {
-        if (this.state.data)
+        if (this.state.data && this.state.groups)
         {
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
-                <BadgeList badges={this.state.data} filterText={this.state.filterText} />
+                <BadgeList badges={this.state.data} groups={this.state.groups}  filterText={this.state.filterText} />
                 </div>
             );
         } else {
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
-                <div>Loading...</div>
+                <div className="loading"><i className="fa fa-spinner fa-spin fa-2x"></i></div>
                 </div>
             );
         }
