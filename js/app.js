@@ -187,9 +187,9 @@ var Guide = React.createClass({
                     var b = data[i]
                     if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
                         if (b.updated_at)
-                            b.updated_at = new Date(b.updated_at);
+                            b.updated_at = new Date(b.updated_at.replace(/\s/, 'T'));
                         if (b.created_at)
-                            b.created_at = new Date(b.created_at);
+                            b.created_at = new Date(b.created_at.replace(/\s/, 'T'));
                         badges.push(b);
                     }
                     i++;
