@@ -164,6 +164,7 @@ input::-webkit-input-placeholder {
 .loading {
     margin: 1em auto;
     text-align: center;
+    color: white;
 }
 
 .sortContainer {

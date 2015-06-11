@@ -84,7 +84,7 @@ var BadgeList = React.createClass({
                 return badgeA.created_at - badgeB.created_at;
         }.bind(this));
         this.props.badges.forEach(function (badge, index, badges) {
-            
+
             var lastBadge = undefined;
             if (badgeNodes.length !== 0) {
                 var lastIndex = index - 1;
@@ -208,7 +208,6 @@ var Guide = React.createClass({
     },
     getInitialState: function() {
         return {
-            data: [],
             filter: [],
             filterText: ''
         };
@@ -235,7 +234,7 @@ var Guide = React.createClass({
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
-                <div>Loading...</div>
+                <div className="loading"><i className="fa fa-spinner fa-spin fa-2x"></i></div>
                 </div>
             );
         }
