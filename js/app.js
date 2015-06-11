@@ -20,7 +20,7 @@ var BadgeImg = React.createClass({
         if (this.props.link) {
             imgContainer = <a href={this.props.link}><img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" /></a>
         } else {
-            imgContainer = <img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" />
+            imgContainer = <img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" />;
         }
         return (
             <div className="badgeImgContainer">
@@ -72,9 +72,8 @@ var BadgeList = React.createClass({
         };
     },
     handleDirection: function(e) {
-        console.log(this);
         this.setState({isDescending: !this.state.isDescending || false});
-        
+
     },
     render: function() {
         var badgeNodes = [];
@@ -85,23 +84,29 @@ var BadgeList = React.createClass({
                 return badgeA.created_at - badgeB.created_at;
         }.bind(this));
         this.props.badges.forEach(function (badge, index, badges) {
-            var regexFilter = new RegExp(this.props.filterText, 'i');
-            if (!this.props.filterText || 
-                regexFilter.test(badge.name) || 
-                regexFilter.test(badge.title) || 
-                regexFilter.test(badge.comment) || 
-                regexFilter.test(badge.category_tags) ||
-                regexFilter.test(badge.created_at.getFullYear())) {
-                if ((!this.props.currentOnly) || (this.props.currentOnly && badge.category_tags.indexOf("current") !== -1)) {
-                    var lastBadge = undefined;
-                    if (badgeNodes.length > 0 && this.props.filterText) {
-                        var lastIndex = index - 1;
-                        if (lastIndex < 0) lastIndex = 0;
-                        lastBadge = badges[lastIndex].created_at;
-                    }
-                    badgeNodes.push(<Badge badge={badge} lastDate={lastBadge} isDescending={this.state.isDescending} key={badge.id} />
-                                   );
+            
+            var lastBadge = undefined;
+            if (badgeNodes.length !== 0) {
+                var lastIndex = index - 1;
+                if (lastIndex < 0) lastIndex = 0;
+                lastBadge = badges[lastIndex].created_at;
+            }
+            if (this.props.filterText) {
+                var regexFilter = new RegExp(this.props.filterText, 'i');
+                if (regexFilter.test(badge.name) || 
+                    regexFilter.test(badge.title) || 
+                    regexFilter.test(badge.comment) || 
+                    regexFilter.test(badge.category_tags) ||
+                    regexFilter.test(badge.created_at.getFullYear())) {
+                    badgeNodes.push(
+                        <Badge badge={badge} lastDate={lastBadge} isDescending={this.state.isDescending} key={badge.id} />
+                    );
                 }
+            }
+            else {
+                badgeNodes.push(
+                    <Badge badge={badge} lastDate={lastBadge} isDescending={this.state.isDescending} key={badge.id} />
+                );
             }
         }, this);
         var directionIcon = 'fa ' + (this.state.isDescending ? 'fa-caret-down' : 'fa-caret-up');
@@ -205,27 +210,35 @@ var Guide = React.createClass({
         return {
             data: [],
             filter: [],
-            filterText: '',
-            currentOnly: false
+            filterText: ''
         };
     },
     componentDidMount: function() {
         this.loadFilter();
         this.loadBadges();
     },
-    handleUserInput: function(filterText, currentOnly) {
+    handleUserInput: function(filterText) {
         this.setState({
-            filterText: filterText,
-            currentOnly: currentOnly
+            filterText: filterText
         });
     },
     render: function () {
-        return (
-            <div>
-            <NavBar filterText={this.state.filterText} currentOnly={this.state.currentOnly} onUserInput={this.handleUserInput} />
-            <BadgeList badges={this.state.data} filterText={this.state.filterText} currentOnly={this.state.currentOnly} />
-            </div>
-        );
+        if (this.state.data)
+        {
+            return (
+                <div>
+                <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
+                <BadgeList badges={this.state.data} filterText={this.state.filterText} />
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
+                <div>Loading...</div>
+                </div>
+            );
+        }
     }
 });
 
