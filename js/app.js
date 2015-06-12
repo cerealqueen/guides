@@ -42,40 +42,54 @@ var BadgeInfo = React.createClass({
 });
 
 var Badge = React.createClass({
-    addBadge: function () {
-    },
     render: function() {
-        var badgeObj = this.props.badges;
-        var thisYear = badgeObj.created_at.getFullYear();
-        var lastYear = undefined;
+        var badgeObj = this.props.badges,
+            isGroup = badgeObj.badges !== undefined,
+            thisYear = undefined,
+            lastYear = undefined,
+            dividerClassList = 'divider';
+        if (isGroup) {
+            thisYear = badgeObj.badges[0].created_at.getFullYear();
+        } else {
+            thisYear = badgeObj.created_at.getFullYear();
+        }
         if (this.props.lastDate)
             lastYear = this.props.lastDate.getFullYear();
-        var dividerClassList = 'divider';
         var isNewYear = lastYear && thisYear !== lastYear;
         var newYear = '';
         if (isNewYear) {
             dividerClassList += ' newYear';
             newYear = this.props.isDescending ? lastYear : thisYear;
         }
-        return (
-            <div>
-            <div className={dividerClassList}>{newYear}</div>
-            <div className="badgeContainer">
-            <div className="badgeItem">
-            <BadgeImg link={badgeObj.link} url={badgeObj.URL} title={badgeObj.title} />
-            <BadgeInfo name={badgeObj.name} comment={badgeObj.comment} />
-            <Tags tags={badgeObj.category_tags} />
-            </div>
-            </div>
-            </div>
-        );
+        if (isGroup) {
+            return (
+                <div>
+                <div className={dividerClassList}>{newYear}</div>
+                <div className="badgeContainer">
+                <div className="badgeItem">
+                GROUP {badgeObj.title}
+                </div>
+                </div>
+                </div>
+            );
+        } else {
+            return (
+                <div>
+                <div className={dividerClassList}>{newYear}</div>
+                <div className="badgeContainer">
+                <div className="badgeItem">
+                <BadgeImg link={badgeObj.link} url={badgeObj.URL} title={badgeObj.title} />
+                <BadgeInfo name={badgeObj.name} comment={badgeObj.comment} />
+                <Tags tags={badgeObj.category_tags} />
+                </div>
+                </div>
+                </div>
+            );
+        }
     }
 });
 
 var BadgeList = React.createClass({
-    componentDidMount: function () {
-
-    },
     getInitialState: function() {
         return {
             isDescending: true
@@ -85,38 +99,76 @@ var BadgeList = React.createClass({
         this.setState({isDescending: !this.state.isDescending || false});
 
     },
+    isMatch: function (badge) {
+        var regexFilter = new RegExp(this.props.filterText, 'i');
+        return regexFilter.test(badge.name) || 
+            regexFilter.test(badge.title) || 
+            regexFilter.test(badge.comment) || 
+            regexFilter.test(badge.category_tags) ||
+            regexFilter.test(badge.created_at.getFullYear());
+    },
     render: function() {
+        var firstIndex = undefined;
         var badgeNodes = [];
         this.props.badges.sort(function (badgeA, badgeB) {
-            if (this.state.isDescending)
-                return badgeB.created_at - badgeA.created_at;
+            var dateA = undefined,
+                dateB = undefined;
+            if (badgeA.badges)
+                dateA = badgeA.badges[0].created_at;
             else
-                return badgeA.created_at - badgeB.created_at;
+                dateA = badgeA.created_at;
+            if (badgeB.badges)
+                dateB = badgeB.badges[0].created_at;
+            else
+                dateB = badgeB.created_at;
+            if (this.state.isDescending)
+                return dateB - dateA;
+            else
+                return dateA - dateB;
         }.bind(this));
-        this.props.badges.forEach(function (badge, index, badges) {
-            var lastBadge = undefined;
-            if (badgeNodes.length !== 0) {
+        this.props.badges.forEach(function (badge, index, badgesArr) {
+            if (badge === undefined)
+                return;
+            var isGroup = badge.badges !== undefined;
+
+            var lastDate = undefined;
+            if (firstIndex !== undefined) {
                 var lastIndex = index - 1;
                 if (lastIndex < 0) lastIndex = 0;
-                lastBadge = badges[lastIndex].created_at;
-            }
-            if (this.props.filterText) {
-                var regexFilter = new RegExp(this.props.filterText, 'i');
-                if (regexFilter.test(badge.name) || 
-                    regexFilter.test(badge.title) || 
-                    regexFilter.test(badge.comment) || 
-                    regexFilter.test(badge.category_tags) ||
-                    regexFilter.test(badge.created_at.getFullYear())) {
-                    badgeNodes.push(
-                        <Badge badge={badge} lastDate={lastBadge} isDescending={this.state.isDescending} key={badge.id} />
-                    );
+                var lastBadge = badgesArr[lastIndex];
+                if (lastBadge) {
+                    if (lastBadge.badges)
+                        lastDate = lastBadge.badges[0].created_at;
+                    else
+                        lastDate = lastBadge.created_at;
                 }
             }
-            else {
-                badgeNodes.push(
-                    <Badge badge={badge} lastDate={lastBadge} isDescending={this.state.isDescending} key={badge.id} />
+            if (this.props.filterText) {
+                if (isGroup) {
+                    var i = 0,
+                        len = badge.badges.length;
+                    while (i < len) {
+                        if (this.isMatch(badge.badges[i])) {
+                            badgeNodes.push (
+                                <Badge badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
+                            );
+                            break;
+                        }
+                        i++;
+                    }
+                } else {
+                    if (this.isMatch(badge)) {
+                        badgeNodes.push (
+                            <Badge badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
+                        );
+                    }
+                }
+            } else {
+                badgeNodes.push (
+                    <Badge badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
                 );
             }
+            firstIndex = index;
         }, this);
         var directionIcon = 'fa ' + (this.state.isDescending ? 'fa-caret-down' : 'fa-caret-up');
         return (
@@ -166,6 +218,7 @@ var Guide = React.createClass({
             cache: true,
             success: function(data) {
                 this.loadFilters(data.filtered_badges || []);
+                this.loadGroups(data.groups || {});
                 this.loadBadges(data.badges || []);
             }.bind(this),
             error: function(xhr, status, err) {
@@ -174,42 +227,55 @@ var Guide = React.createClass({
         });   
     },
     loadBadges: function(data) {
-        var i = 0, 
-            len = data.length, 
-            badges = [];
-        while(i < len)
-        {
-            var b = data[i];
-            if (b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
+        if (data === undefined || data.length === 0)
+            return;
+        var groupInfo = this.state.groups;
+        var badges = data.map(function (b, i) {
+            if (b && b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
                 if (b.updated_at)
                     b.updated_at = new Date(b.updated_at.replace(/\s/, 'T'));
                 if (b.created_at)
                     b.created_at = new Date(b.created_at.replace(/\s/, 'T'));
-                badges.push(b);
+                if (b.group_id && groupInfo[b.group_id]) {
+                    if (groupInfo[b.group_id].badges === undefined)
+                        groupInfo[b.group_id].badges = [];
+                    groupInfo[b.group_id].badges.push(b);
+                    groupInfo[b.group_id].badges.sort(function (badgeA, badgeB) {
+                        return badgeB.created_at - badgeA.created_at;
+                    });
+                    return;
+                }
+                return b;
             }
-            i++;
+        }, this);
+        
+        var groups = [];
+        for (var groupName in groupInfo) {
+            if (groupInfo.hasOwnProperty(groupName)) {
+                var groupData = groupInfo[groupName];
+                groups.push(
+                    {
+                        "name": groupName,
+                        "title": groupData.title,
+                        "badges": groupData.badges
+                    }
+                );
+            }
         }
-        this.setState({data: badges});
+        $.merge(badges, groups);
+        this.setState({badges: badges});
     },
     loadFilters: function(data) {
-        if (data === undefined)
+        if (data === undefined || data.length === 0)
             return;
-        var i = 0,
-            len = data.length,
-            filters = [];
-        while (i < len)
-        {
-            var f = data[i];
-            if (f && f.badge_ids && f.name && f.title) {
-                f.isPartOfGroup = function (id) {
-                    return this.badge_ids.indexOf(id) !== -1;
-                };
-                filters.push(f);
-            }
-            i++;
-        }
+        var filters = data.slice();
         filters.sort();
         this.setState({filter:filters});
+    },
+    loadGroups: function(data) {
+        if (data === undefined)
+            return;
+        this.setState({groups:data});
     },
     getInitialState: function() {
         return {
@@ -225,12 +291,12 @@ var Guide = React.createClass({
         });
     },
     render: function () {
-        if (this.state.data)
+        if (this.state.badges)
         {
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
-                <BadgeList badges={this.state.data} filterText={this.state.filterText} />
+                <BadgeList badges={this.state.badges} groups={this.state.groups} filterText={this.state.filterText} />
                 </div>
             );
         } else {
