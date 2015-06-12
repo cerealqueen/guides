@@ -1,6 +1,6 @@
 # Starmen.net Badge Guide
 
-The new badge guide for Starmen.net written using AngularJS 1.3.6.
+The new badge guide for Starmen.net written using React.
 
 ## Contributing
 
