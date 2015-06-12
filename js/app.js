@@ -15,12 +15,20 @@ var Tags = React.createClass({
 });
 
 var BadgeImg = React.createClass({
+    createImg: function (badge) {
+        if (badge.link) {
+            return <a href={badge.link}><img className="badgeImg" src={badge.URL} alt={badge.title} onload="this.style.opacity='1';" /></a>
+        } else {
+            return <img className="badgeImg" src={badge.URL} alt={badge.title} onload="this.style.opacity='1';" />;
+        }
+    },
     render: function() {
         var imgContainer = undefined;
-        if (this.props.link) {
-            imgContainer = <a href={this.props.link}><img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" /></a>
+        var isGroup = this.props.badge.badges !== undefined;
+        if (isGroup) {
+            imgContainer = this.props.badge.badges.map(this.createImg);
         } else {
-            imgContainer = <img className="badgeImg" src={this.props.url} alt={this.props.title} onload="this.style.opacity='1';" />;
+            imgContainer = this.createImg(this.props.badge);
         }
         return (
             <div className="badgeImgContainer">
@@ -31,13 +39,36 @@ var BadgeImg = React.createClass({
 });
 
 var BadgeInfo = React.createClass({
-    render: function () {
+    getInfo: function (badge) {
         return (
-            <div className="block">
-            <h3>{this.props.name}</h3>
-            <p>{this.props.comment}</p>
-            </div>
+            <li>
+            {badge.name}<br />
+            {badge.comment}
+            </li>
         );
+    },
+    render: function () {
+        var isGroup = this.props.badge.badges !== undefined;
+        if (isGroup) {
+            var badgeGroup = this.props.badge;
+            var individualInfos = badgeGroup.badges.map(this.getInfo);
+            return (
+                <div className="block">
+                <h3>{badgeGroup.title}</h3>
+                <ul className="badgeGroup">
+                {individualInfos}
+                </ul>
+                </div>
+            );
+        } else {
+            var badge = this.props.badge;
+            return (
+                <div className="block">
+                <h3>{badge.name}</h3>
+                <p>{badge.comment}</p>
+                </div>
+            );
+        }
     }
 });
 
@@ -49,7 +80,7 @@ var Badge = React.createClass({
             lastYear = undefined,
             dividerClassList = 'divider';
         if (isGroup) {
-            thisYear = badgeObj.badges[0].created_at.getFullYear();
+            thisYear = badgeObj.badges[badgeObj.badges.length - 1].created_at.getFullYear();
         } else {
             thisYear = badgeObj.created_at.getFullYear();
         }
@@ -61,31 +92,18 @@ var Badge = React.createClass({
             dividerClassList += ' newYear';
             newYear = this.props.isDescending ? lastYear : thisYear;
         }
-        if (isGroup) {
-            return (
-                <div>
-                <div className={dividerClassList}>{newYear}</div>
-                <div className="badgeContainer">
-                <div className="badgeItem">
-                GROUP {badgeObj.title}
-                </div>
-                </div>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                <div className={dividerClassList}>{newYear}</div>
-                <div className="badgeContainer">
-                <div className="badgeItem">
-                <BadgeImg link={badgeObj.link} url={badgeObj.URL} title={badgeObj.title} />
-                <BadgeInfo name={badgeObj.name} comment={badgeObj.comment} />
-                <Tags tags={badgeObj.category_tags} />
-                </div>
-                </div>
-                </div>
-            );
-        }
+        return (
+            <div>
+            <div className={dividerClassList}>{newYear}</div>
+            <div className="badgeContainer">
+            <div className="badgeItem">
+            <BadgeImg badge={badgeObj} />
+            <BadgeInfo badge={badgeObj} />
+            <Tags tags={isGroup ? badgeObj.badges[badgeObj.badges.length - 1].category_tags : badgeObj.category_tags} />
+            </div>
+            </div>
+            </div>
+        );
     }
 });
 
@@ -114,11 +132,11 @@ var BadgeList = React.createClass({
             var dateA = undefined,
                 dateB = undefined;
             if (badgeA.badges)
-                dateA = badgeA.badges[0].created_at;
+                dateA = badgeA.badges[badgeA.badges.length - 1].created_at;
             else
                 dateA = badgeA.created_at;
             if (badgeB.badges)
-                dateB = badgeB.badges[0].created_at;
+                dateB = badgeB.badges[badgeB.badges.length - 1].created_at;
             else
                 dateB = badgeB.created_at;
             if (this.state.isDescending)
@@ -138,7 +156,7 @@ var BadgeList = React.createClass({
                 var lastBadge = badgesArr[lastIndex];
                 if (lastBadge) {
                     if (lastBadge.badges)
-                        lastDate = lastBadge.badges[0].created_at;
+                        lastDate = lastBadge.badges[lastBadge.badges.length - 1].created_at;
                     else
                         lastDate = lastBadge.created_at;
                 }
@@ -241,14 +259,14 @@ var Guide = React.createClass({
                         groupInfo[b.group_id].badges = [];
                     groupInfo[b.group_id].badges.push(b);
                     groupInfo[b.group_id].badges.sort(function (badgeA, badgeB) {
-                        return badgeB.created_at - badgeA.created_at;
+                        return badgeA.created_at - badgeB.created_at;
                     });
                     return;
                 }
                 return b;
             }
         }, this);
-        
+
         var groups = [];
         for (var groupName in groupInfo) {
             if (groupInfo.hasOwnProperty(groupName)) {
