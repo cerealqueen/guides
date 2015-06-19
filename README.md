@@ -1,4 +1,4 @@
-![](https://travis-ci.org/aaronsky500/starmen-badge-guide.svg?branch=master)
+[![Build Status](https://travis-ci.org/aaronsky500/starmen-badge-guide.svg?branch=master)](https://travis-ci.org/aaronsky500/starmen-badge-guide)
 # Starmen.net Badge Guide
 
 The new badge guide for Starmen.net written using React.
