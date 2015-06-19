@@ -11,8 +11,9 @@ var streamify = require('gulp-streamify');
 var ghPages = require('gulp-gh-pages');
 
 var path = {
-    HTML: 'src/index.html',
-    PAGE404: '404.html',
+    INDEX: 'src/index.html',
+    PAGE_404: 'src/404.html',
+    ALL_HTML: 'src/*.html',
     CSS: 'css/**',
     IMG: 'img/**',
     DATA: 'src/data/**',
@@ -28,8 +29,8 @@ var path = {
 };
 
 gulp.task('copy', function () {
-    gulp.src(path.PAGE404)
-        .pipe(gulp.dest(path.DEST));
+    gulp.src(path.PAGE_404)
+        .pipe(gulp.dest(path.DEST))
     gulp.src(path.CSS)
         .pipe(gulp.dest(path.DEST_CSS));
     gulp.src(path.IMG)
@@ -40,26 +41,17 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(path.DEST));
     gulp.src('favicon.ico')
         .pipe(gulp.dest(path.DEST));
-    gulp.src('.travis.yml')
-        .pipe(gulp.dest(path.DEST));
-    gulp.src('.htaccess')
-        .pipe(gulp.dest(path.DEST));
-    gulp.src('gulpfile.js')
-        .pipe(gulp.dest(path.DEST));
-    gulp.src('package.json')
+    gulp.src('CNAME')
         .pipe(gulp.dest(path.DEST));
     gulp.src('*.txt')
         .pipe(gulp.dest(path.DEST));
 });
 
 gulp.task('watch', function () {
-    gulp.src(path.HTML)
+    gulp.src(path.INDEX)
         .pipe(gulp.dest(path.DEST));
     
-    gulp.watch([path.HTML, path.CSS, path.DATA, path.IMG], ['copy']);
-    
-    gulp.src(path.HTML)
-        .pipe(gulp.dest(path.DEST));
+    gulp.watch([path.ALL_HTML, path.CSS, path.DATA, path.IMG], ['copy']);
 
     var watcher  = watchify(browserify({
         entries: [path.ENTRY_POINT],
@@ -93,7 +85,7 @@ gulp.task('build', function(){
 });
 
 gulp.task('replaceHTML', function(){
-    gulp.src(path.HTML)
+    gulp.src(path.INDEX)
         .pipe(htmlreplace({js: 'build/' + path.MINIFIED_OUT}))
         .pipe(gulp.dest(path.DEST));
 });
