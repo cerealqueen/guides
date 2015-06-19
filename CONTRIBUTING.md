@@ -1,2 +1,0 @@
-**IMPORTANT**: Thanks for contributing! Please keep in mind that by contributing to the Starmen.net Badge Guide, we ask that you agree to allow the project owners to
-license your work under the the terms of the [MIT License](LICENSE.md).
