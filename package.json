@@ -1,0 +1,33 @@
+{
+  "name": "starmen-badge-guide",
+  "version": "1.0.0",
+  "description": "The new badge guide for Starmen.net written using React.",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://aaronsky500@github.com/aaronsky500/starmen-badge-guide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronsky500/starmen-badge-guide/issues"
+  },
+  "homepage": "https://github.com/aaronsky500/starmen-badge-guide#readme",
+  "devDependencies": {
+    "browserify": "^10.2.4",
+    "gulp": "^3.9.0",
+    "gulp-gh-pages": "^0.5.2",
+    "gulp-html-replace": "^1.5.0",
+    "gulp-react": "^3.0.1",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.2.0",
+    "jasmine": "^2.3.1",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2"
+  }
+}
