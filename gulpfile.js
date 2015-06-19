@@ -76,4 +76,6 @@ gulp.task('replaceHTML', function(){
 
 gulp.task('production', ['replaceHTML', 'build']);
 
+gulp.task('ci', ['replaceHTML', 'build']);
+
 gulp.task('default', ['watch']);
