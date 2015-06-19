@@ -75,13 +75,15 @@ gulp.task('replaceHTML', function(){
         .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('deploy', function () {
+gulp.task('pages', function () {
     return gulp.src('./dist/**/*')
         .pipe(ghPages());
 });
 
-gulp.task('production', ['replaceHTML', 'build', 'deploy']);
+gulp.task('production', ['copy' , 'replaceHTML', 'build']);
 
-gulp.task('ci', ['replaceHTML', 'build']);
+gulp.task('ci', ['production']);
 
 gulp.task('default', ['watch']);
+
+gulp.task('deploy', ['production', 'pages']);
