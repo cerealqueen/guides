@@ -20,7 +20,7 @@ var path = {
     DEST_DATA: 'dist/src/data',
     DEST_BUILD: 'dist/build',
     DEST_SRC: 'dist/src',
-    ENTRY_POINT: './src/js/App.js'
+    ENTRY_POINT: './src/js/app.js'
 };
 
 gulp.task('copy', function(){
