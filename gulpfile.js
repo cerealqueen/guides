@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var htmlreplace = require('gulp-html-replace');
@@ -10,6 +12,7 @@ var ghPages = require('gulp-gh-pages');
 
 var path = {
     HTML: 'src/index.html',
+    PAGE404: '404.html',
     CSS: 'css/**',
     IMG: 'img/**',
     DATA: 'src/data/**',
@@ -24,8 +27,8 @@ var path = {
     ENTRY_POINT: './src/js/app.js'
 };
 
-gulp.task('copy', function(){
-    gulp.src(path.HTML)
+gulp.task('copy', function () {
+    gulp.src(path.PAGE404)
         .pipe(gulp.dest(path.DEST));
     gulp.src(path.CSS)
         .pipe(gulp.dest(path.DEST_CSS));
@@ -33,16 +36,38 @@ gulp.task('copy', function(){
         .pipe(gulp.dest(path.DEST_IMG));
     gulp.src(path.DATA)
         .pipe(gulp.dest(path.DEST_DATA));
+    gulp.src('apple-touch-icon-precomposed.png')
+        .pipe(gulp.dest(path.DEST));
+    gulp.src('favicon.ico')
+        .pipe(gulp.dest(path.DEST));
+    gulp.src('.travis.yml')
+        .pipe(gulp.dest(path.DEST));
+    gulp.src('.htaccess')
+        .pipe(gulp.dest(path.DEST));
+    gulp.src('gulpfile.js')
+        .pipe(gulp.dest(path.DEST));
+    gulp.src('package.json')
+        .pipe(gulp.dest(path.DEST));
+    gulp.src('*.txt')
+        .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
+    gulp.src(path.HTML)
+        .pipe(gulp.dest(path.DEST));
+    
     gulp.watch([path.HTML, path.CSS, path.DATA, path.IMG], ['copy']);
+    
+    gulp.src(path.HTML)
+        .pipe(gulp.dest(path.DEST));
 
     var watcher  = watchify(browserify({
         entries: [path.ENTRY_POINT],
         transform: [reactify],
         debug: true,
-        cache: {}, packageCache: {}, fullPaths: true
+        cache: {},
+        packageCache: {},
+        fullPaths: true
     }));
 
     return watcher.on('update', function () {
@@ -69,13 +94,13 @@ gulp.task('build', function(){
 
 gulp.task('replaceHTML', function(){
     gulp.src(path.HTML)
-        .pipe(htmlreplace({
-        'js': 'build/' + path.MINIFIED_OUT
-    }))
+        .pipe(htmlreplace({js: 'build/' + path.MINIFIED_OUT}))
         .pipe(gulp.dest(path.DEST));
 });
 
 gulp.task('pages', function () {
+    gulp.src('*.md')
+        .pipe(gulp.dest(path.DEST));
     return gulp.src('./dist/**/*')
         .pipe(ghPages());
 });
