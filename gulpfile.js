@@ -94,7 +94,7 @@ gulp.task('pages', function () {
     gulp.src('*.md')
         .pipe(gulp.dest(path.DEST));
     return gulp.src('./dist/**/*')
-        .pipe(ghPages());
+        .pipe(ghPages({push:false}));
 });
 
 gulp.task('production', ['copy' , 'replaceHTML', 'build']);
