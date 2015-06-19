@@ -6,6 +6,7 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var streamify = require('gulp-streamify');
+var ghPages = require('gulp-gh-pages');
 
 var path = {
     HTML: 'src/index.html',
@@ -74,7 +75,12 @@ gulp.task('replaceHTML', function(){
         .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('production', ['replaceHTML', 'build']);
+gulp.task('deploy', function () {
+    return gulp.src('./dist/**/*')
+        .pipe(ghPages());
+});
+
+gulp.task('production', ['replaceHTML', 'build', 'deploy']);
 
 gulp.task('ci', ['replaceHTML', 'build']);
 
