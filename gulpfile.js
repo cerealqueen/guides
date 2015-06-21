@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var del = require('del');
 var uglify = require('gulp-uglify');
 var htmlreplace = require('gulp-html-replace');
 var source = require('vinyl-source-stream');
@@ -13,7 +14,7 @@ var ghPages = require('gulp-gh-pages');
 var path = {
     INDEX: 'src/index.html',
     PAGE_404: 'src/404.html',
-    ALL_HTML: 'src/*.html',
+    HTML: 'src/*.html',
     CSS: 'css/**',
     IMG: 'img/**',
     DATA: 'src/data/**',
@@ -28,9 +29,15 @@ var path = {
     ENTRY_POINT: './src/js/app.js'
 };
 
+gulp.task('clean', function () {
+    del([
+        'dist'
+    ]);
+});
+
 gulp.task('copy', function () {
-    gulp.src(path.PAGE_404)
-        .pipe(gulp.dest(path.DEST))
+    gulp.src(path.HTML)
+        .pipe(gulp.dest(path.DEST));
     gulp.src(path.CSS)
         .pipe(gulp.dest(path.DEST_CSS));
     gulp.src(path.IMG)
@@ -47,11 +54,8 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(path.DEST));
 });
 
-gulp.task('watch', function () {
-    gulp.src(path.INDEX)
-        .pipe(gulp.dest(path.DEST));
-    
-    gulp.watch([path.ALL_HTML, path.CSS, path.DATA, path.IMG], ['copy']);
+gulp.task('watch', function () {    
+    gulp.watch([path.HTML, path.CSS, path.DATA, path.IMG], ['copy']);
 
     var watcher  = watchify(browserify({
         entries: [path.ENTRY_POINT],
@@ -97,10 +101,10 @@ gulp.task('pages', function () {
         .pipe(ghPages({push:false}));
 });
 
-gulp.task('production', ['copy' , 'replaceHTML', 'build']);
+gulp.task('production', ['clean', 'copy' , 'replaceHTML', 'build']);
 
 gulp.task('ci', ['production']);
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['clean', 'watch']);
 
 gulp.task('deploy', ['production', 'pages']);
