@@ -1,6 +1,7 @@
 var React = require('react');
 var NavBar = require('./navbar');
 var BadgeList = require('./badgelist');
+var Badge = require('./badge');
 
 module.exports = React.createClass({
     loadBadgeFile: function() {
@@ -23,33 +24,30 @@ module.exports = React.createClass({
             return;
         var groupInfo = this.state.groups;
         var badges = data.map(function (b, i) {
-            if (b && b.name && b.URL && $.inArray(b.id, this.state.filter) === -1) {
-                if (b.updated_at)
-                    b.updated_at = new Date(b.updated_at.replace(/\s/, 'T'));
-                if (b.created_at)
-                    b.created_at = new Date(b.created_at.replace(/\s/, 'T'));
+            if ($.inArray(b.id, this.state.filter) === -1) {
+                var badge = new Badge(b);
                 if (b.group_id && groupInfo[b.group_id]) {
                     if (groupInfo[b.group_id].badges === undefined)
                         groupInfo[b.group_id].badges = [];
-                    groupInfo[b.group_id].badges.push(b);
+                    groupInfo[b.group_id].badges.push(badge);
                     groupInfo[b.group_id].badges.sort(function (badgeA, badgeB) {
                         return badgeA.created_at - badgeB.created_at;
                     });
-                    return;
+                } else {
+                    return badge;
                 }
-                return b;
             }
         }, this);
-
         var groups = [];
         for (var groupName in groupInfo) {
             if (groupInfo.hasOwnProperty(groupName)) {
                 var groupData = groupInfo[groupName];
                 groups.push(
                     {
-                        "name": groupName,
-                        "title": groupData.title,
-                        "badges": groupData.badges
+                        name: groupName,
+                        title: groupData.title,
+                        badges: groupData.badges,
+                        isGroup: true
                     }
                 );
             }
@@ -58,14 +56,14 @@ module.exports = React.createClass({
         this.setState({badges: badges});
     },
     loadFilters: function(data) {
-        if (data === undefined || data.length === 0)
+        if (!data || !data.length)
             return;
         var filters = data.slice();
         filters.sort();
         this.setState({filter:filters});
     },
     loadGroups: function(data) {
-        if (data === undefined)
+        if (!data)
             return;
         this.setState({groups:data});
     },

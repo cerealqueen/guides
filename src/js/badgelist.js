@@ -1,5 +1,5 @@
 var React = require('react');
-var Badge = require('./badge');
+var BadgeItem = require('./badgeitem');
 
 module.exports = React.createClass({
     getInitialState: function() {
@@ -15,73 +15,60 @@ module.exports = React.createClass({
         return regexFilter.test(badge.name) || 
             regexFilter.test(badge.title) || 
             regexFilter.test(badge.comment) || 
-            regexFilter.test(badge.category_tags) ||
-            regexFilter.test(badge.created_at.getFullYear());
+            regexFilter.test(badge.categoryTags) ||
+            regexFilter.test(badge.createdAt.getFullYear());
     },
     sortBadges: function (badgeA, badgeB) {
-        var dateA = undefined,
-            dateB = undefined;
-        if (badgeA.badges)
-            dateA = badgeA.badges[badgeA.badges.length - 1].created_at;
-        else
-            dateA = badgeA.created_at;
-        if (badgeB.badges)
-            dateB = badgeB.badges[badgeB.badges.length - 1].created_at;
-        else
-            dateB = badgeB.created_at;
+        var dateA = badgeA.badges ? badgeA.badges[badgeA.badges.length - 1].createdAt : badgeA.createdAt,
+            dateB = badgeB.badges ? badgeB.badges[badgeB.badges.length - 1].createdAt : badgeB.createdAt;
         if (this.state.isDescending)
             return dateB - dateA;
         else
             return dateA - dateB;
     },
-    render: function() { 
-        var firstIndex = undefined,
-            badgeNodes = [], 
-            badges = this.props.badges; 
-        badges.sort(this.sortBadges.bind(this));
-        badgeNodes = badges.map(function (badge, index, badges) {
-            if (badge === undefined)
-                return;
-            var isGroup = badge.badges !== undefined;
-            var lastDate = undefined;
-            if (firstIndex !== undefined) {
-                var lastIndex = index - 1;
-                if (lastIndex < 0) lastIndex = 0;
-                var lastBadge = badgesArr[lastIndex];
-                if (lastBadge) {
-                    if (lastBadge.badges)
-                        lastDate = lastBadge.badges[lastBadge.badges.length - 1].created_at;
-                    else
-                        lastDate = lastBadge.created_at;
-                }
+    processBadges: function (badge, index, badges) {
+        if (!badge)
+            return;
+        var lastBadge = badges[index - 1],
+            lastDate;
+        if (lastBadge) {
+            if (lastBadge.isGroup) {
+                var len = lastBadge.badges.length - 1;
+                lastDate = lastBadge.badges[len].createdAt;
+            } else {
+                lastDate = lastBadge.createdAt;
             }
-            if (this.props.filterText) {
-                if (isGroup) {
+        }
+        if (this.props.filterText) {
+            if (badge.isGroup) {
+                if (this.isMatch(badge)) {
                     var i = 0,
                         len = badge.badges.length;
                     while (i < len) {
                         if (this.isMatch(badge.badges[i])) {
                             return (
-                                <Badge badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
+                                <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} />
                             );
-                            break;
                         }
                         i++;
                     }
-                } else {
-                    if (this.isMatch(badge)) {
-                        return (
-                            <Badge badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
-                        );
-                    }
                 }
-            } else {
+            } else if (this.isMatch(badge)) {
                 return (
-                    <Badge badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
+                    <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
                 );
-            }
-            firstIndex = index;
-        }, this);
+            } 
+        } else {
+            return (
+                <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
+            );
+        }
+    },
+    render: function() { 
+        var badges = this.props.badges,
+            badgeNodes = [];
+        badges.sort(this.sortBadges);
+        badgeNodes = badges.map(this.processBadges, this);
         var directionIcon = 'fa ' + (this.state.isDescending ? 'fa-caret-down' : 'fa-caret-up');
         return (
             <div>

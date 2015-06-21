@@ -1,39 +1,18 @@
-var React = require('react');
-var BadgeImg = require('./badgeimg');
-var BadgeInfo = require('./badgeinfo');
-var Tags = require('./tags');
+function Badge (options) {
+    if (!options && !options.name && !options.URL)
+        throw new Error('invalid badge');
+    this.id = options.id;
+    this.name = options.name;
+    this.url = options.URL;
+    this.comment = options.comment;
+    this.titleTag = options.title_tag;
+    this.link = options.link;
+    if (options.updated_at)
+        this.updatedAt = new Date(options.updated_at.replace(/\s/, 'T'));
+    if (options.created_at)
+        this.createdAt = new Date(options.created_at.replace(/\s/, 'T'));
+    this.categoryTags = options.category_tags;
+    this.isGroup = false;
+}
 
-module.exports = React.createClass({
-    render: function() {
-        var badgeObj = this.props.badges,
-            isGroup = badgeObj.badges !== undefined,
-            thisYear = undefined,
-            lastYear = undefined,
-            dividerClassList = 'divider';
-        if (isGroup) {
-            thisYear = badgeObj.badges[badgeObj.badges.length - 1].created_at.getFullYear();
-        } else {
-            thisYear = badgeObj.created_at.getFullYear();
-        }
-        if (this.props.lastDate)
-            lastYear = this.props.lastDate.getFullYear();
-        var isNewYear = lastYear && thisYear !== lastYear;
-        var newYear = '';
-        if (isNewYear) {
-            dividerClassList += ' newYear';
-            newYear = this.props.isDescending ? lastYear : thisYear;
-        }
-        return (
-            <div>
-            <div className={dividerClassList}>{newYear}</div>
-            <div className="badgeContainer">
-            <div className="badgeItem">
-            <BadgeImg badge={badgeObj} />
-            <BadgeInfo badge={badgeObj} />
-            <Tags tags={isGroup ? badgeObj.badges[badgeObj.badges.length - 1].category_tags : badgeObj.category_tags} />
-            </div>
-            </div>
-            </div>
-        );
-    }
-});
+module.exports = Badge;
