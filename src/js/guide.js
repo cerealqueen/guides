@@ -4,34 +4,37 @@ var BadgeList = require('./badgelist');
 var Badge = require('./badge');
 
 module.exports = React.createClass({
-    loadBadgeFile: function() {
+    loadBadgeFile: function () {
         $.ajax({
             url: this.props.badgeUrl,
             dataType: 'json',
             cache: true,
-            success: function(data) {
+            success: function (data) {
                 this.loadFilters(data.filtered_badges || []);
                 this.loadGroups(data.groups || {});
                 this.loadBadges(data.badges || []);
             }.bind(this),
-            error: function(xhr, status, err) {
+            error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
-        });   
+        });
     },
-    loadBadges: function(data) {
-        if (data === undefined || data.length === 0)
-            return;
+    loadBadges: function (data) {
+        if (data === undefined || data.length === 0) {
+            throw new Error('no badges could be found for loading');
+        }
         var groupInfo = this.state.groups;
         var badges = data.map(function (b, i) {
             if ($.inArray(b.id, this.state.filter) === -1) {
                 var badge = new Badge(b);
-                if (b.group_id && groupInfo[b.group_id]) {
+                if (b.group_id) {
+                    if (!groupInfo || !groupInfo[b.group_id])
+                        throw new Error('group structure for ' + b.group_id + 'could not be located');
                     if (groupInfo[b.group_id].badges === undefined)
                         groupInfo[b.group_id].badges = [];
                     groupInfo[b.group_id].badges.push(badge);
                     groupInfo[b.group_id].badges.sort(function (badgeA, badgeB) {
-                        return badgeA.created_at - badgeB.created_at;
+                        return badgeA.createdAt - badgeB.createdAt;
                     });
                 } else {
                     return badge;
@@ -47,7 +50,8 @@ module.exports = React.createClass({
                         name: groupName,
                         title: groupData.title,
                         badges: groupData.badges,
-                        isGroup: true
+                        isGroup: true,
+                        createdAt: groupData.badges[groupData.badges.length - 1].createdAt
                     }
                 );
             }

@@ -8,12 +8,7 @@ module.exports = React.createClass({
         var badgeObj = this.props.badges,
             dividerClassList = 'divider',
             lastYear,
-            thisYear;
-        if (badgeObj.isGroup) {
-            thisYear = badgeObj.badges[badgeObj.badges.length - 1].createdAt.getFullYear();
-        } else {
             thisYear = badgeObj.createdAt.getFullYear();
-        }
         if (this.props.lastDate)
             lastYear = this.props.lastDate.getFullYear();
         var isNewYear = lastYear && thisYear !== lastYear;

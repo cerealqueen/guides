@@ -2,54 +2,56 @@ var React = require('react');
 var BadgeItem = require('./badgeitem');
 
 module.exports = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             isDescending: true
         };
     },
-    handleDirection: function(e) {
+    handleDirection: function (e) {
         this.setState({isDescending: !this.state.isDescending || false});
     },
     isMatch: function (badge) {
         var regexFilter = new RegExp(this.props.filterText, 'i');
-        return regexFilter.test(badge.name) || 
-            regexFilter.test(badge.title) || 
-            regexFilter.test(badge.comment) || 
+        return regexFilter.test(badge.name) ||
+            regexFilter.test(badge.title) ||
+            regexFilter.test(badge.comment) ||
             regexFilter.test(badge.categoryTags) ||
             regexFilter.test(badge.createdAt.getFullYear());
     },
     sortBadges: function (badgeA, badgeB) {
-        var dateA = badgeA.badges ? badgeA.badges[badgeA.badges.length - 1].createdAt : badgeA.createdAt,
-            dateB = badgeB.badges ? badgeB.badges[badgeB.badges.length - 1].createdAt : badgeB.createdAt;
-        if (this.state.isDescending)
+        var dateA = badgeA.createdAt,
+            dateB = badgeB.createdAt;
+        if (this.state.isDescending) {
             return dateB - dateA;
-        else
+        } else {
             return dateA - dateB;
+        };
     },
     processBadges: function (badge, index, badges) {
-        if (!badge)
+        if (!badge) {
             return;
+        }
         var lastBadge = badges[index - 1],
             lastDate;
         if (lastBadge) {
-            if (lastBadge.isGroup) {
-                var len = lastBadge.badges.length - 1;
-                lastDate = lastBadge.badges[len].createdAt;
-            } else {
-                lastDate = lastBadge.createdAt;
-            }
+            lastDate = lastBadge.createdAt;
         }
         if (this.props.filterText) {
             if (badge.isGroup) {
                 if (this.isMatch(badge)) {
+                    return (
+                        <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
+                    );
+                } else {
                     var i = 0,
-                        len = badge.badges.length;
+                        len = badge.badges.length,
+                        b;
                     while (i < len) {
-                        if (this.isMatch(badge.badges[i])) {
+                        b = badge.badges[i];
+                        if (this.isMatch(b))
                             return (
-                                <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} />
+                                <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={b.id} />
                             );
-                        }
                         i++;
                     }
                 }
@@ -57,7 +59,7 @@ module.exports = React.createClass({
                 return (
                     <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
                 );
-            } 
+            }
         } else {
             return (
                 <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.state.isDescending} key={badge.id} />
