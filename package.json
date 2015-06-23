@@ -2,9 +2,9 @@
   "name": "starmen-badge-guide",
   "version": "1.0.0",
   "description": "The new badge guide for Starmen.net written using React.",
-  "main": "Gulpfile.js",
+  "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,21 @@
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.5",
-    "jasmine": "^2.3.1",
+    "jest": "^0.1.40",
+    "jest-cli": "^0.4.13",
     "react": "^0.13.3",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-tools": "*"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/spec/tests-preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   }
 }
