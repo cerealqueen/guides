@@ -45,15 +45,15 @@ module.exports = React.createClass({
         for (var groupName in groupInfo) {
             if (groupInfo.hasOwnProperty(groupName)) {
                 var groupData = groupInfo[groupName];
-                groups.push(
-                    {
-                        name: groupName,
-                        title: groupData.title,
-                        badges: groupData.badges,
-                        isGroup: true,
-                        createdAt: groupData.badges[groupData.badges.length - 1].createdAt
-                    }
-                );
+                var groupItem = {
+                    name: groupName,
+                    title: groupData.title,
+                    badges: groupData.badges,
+                    isGroup: true,
+                    createdAt: groupData.badges[groupData.badges.length - 1].createdAt
+                };
+                
+                groups.push(groupItem);
             }
         }
         $.merge(badges, groups);
