@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = React.createClass({
+var BadgeImg = React.createClass({
     createImg: function (badge) {
         if (badge.link) {
             return <a href={badge.link}><img className="badgeImg" src={badge.url} alt={badge.titleTag} onload="this.style.opacity='1';" /></a>
@@ -23,3 +23,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+module.exports = BadgeImg;

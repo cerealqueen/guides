@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = React.createClass({
+var NavBar = React.createClass({
     handleChange: function() {
         this.props.onUserInput(this.refs.filterTextInput.getDOMNode().value);
     },
@@ -22,3 +22,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+module.exports = NavBar;

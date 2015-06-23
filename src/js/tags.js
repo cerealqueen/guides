@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = React.createClass({
+var Tags = React.createClass({
     render: function() {
         var tags = this.props.tags,
             tagString;
@@ -15,3 +15,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+module.exports = Tags;

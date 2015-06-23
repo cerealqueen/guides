@@ -3,7 +3,7 @@ var BadgeImg = require('./badgeimg');
 var BadgeInfo = require('./badgeinfo');
 var Tags = require('./tags');
 
-module.exports = React.createClass({
+var BadgeItem = React.createClass({
     render: function() {
         var badgeObj = this.props.badges,
             dividerClassList = 'divider',
@@ -33,3 +33,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+module.exports = BadgeItem;

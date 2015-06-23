@@ -3,7 +3,7 @@ var NavBar = require('./navbar');
 var BadgeList = require('./badgelist');
 var Badge = require('./badge');
 
-module.exports = React.createClass({
+var Guide = React.createClass({
     loadBadgeFile: function () {
         $.ajax({
             url: this.props.badgeUrl,
@@ -103,3 +103,5 @@ module.exports = React.createClass({
         }
     }
 });
+
+module.exports = Guide;

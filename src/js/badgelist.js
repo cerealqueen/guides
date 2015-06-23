@@ -1,7 +1,7 @@
 var React = require('react');
 var BadgeItem = require('./badgeitem');
 
-module.exports = React.createClass({
+var BadgeList = React.createClass({
     getInitialState: function () {
         return {
             isDescending: true
@@ -87,3 +87,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+module.exports = BadgeList;

@@ -1,6 +1,6 @@
 var React = require('react');
 
-module.exports = React.createClass({
+var BadgeInfo = React.createClass({
     getInfo: function (badge) {
         return (
             <li key={badge.id}>
@@ -31,3 +31,5 @@ module.exports = React.createClass({
         }
     }
 });
+
+module.exports = BadgeInfo;
