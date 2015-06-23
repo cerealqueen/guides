@@ -89,6 +89,9 @@ gulp.task('build', function(){
 });
 
 gulp.task('replaceHTML', function(){
+    del([
+        path.DEST + 'index.html'
+    ]);
     gulp.src(path.INDEX)
         .pipe(htmlreplace({js: 'build/' + path.MINIFIED_OUT}))
         .pipe(gulp.dest(path.DEST));
@@ -103,8 +106,8 @@ gulp.task('pages', function () {
 
 gulp.task('production', ['clean', 'copy' , 'replaceHTML', 'build']);
 
-gulp.task('ci', ['production']);
+gulp.task('ci', ['clean', 'copy', 'replaceHTML', 'build']);
 
 gulp.task('default', ['clean', 'watch']);
 
-gulp.task('deploy', ['production', 'pages']);
+gulp.task('deploy', ['clean', 'copy', 'replaceHTML', 'build', 'pages']);
