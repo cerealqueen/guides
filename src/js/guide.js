@@ -3,6 +3,8 @@ var NavBar = require('./navbar');
 var BadgeList = require('./badgelist');
 var Badge = require('./badge');
 
+var BADGES = [];
+
 var Guide = React.createClass({
     loadBadgeFile: function () {
         $.ajax({
@@ -24,7 +26,7 @@ var Guide = React.createClass({
             throw new Error('no badges could be found for loading');
         }
         var groupInfo = this.state.groups;
-        var badges = data.map(function (b, i) {
+        var badgeThings = data.map(function (b, i) {
             if ($.inArray(b.id, this.state.filter) === -1) {
                 var badge = new Badge(b);
                 if (b.group_id) {
@@ -41,6 +43,7 @@ var Guide = React.createClass({
                 }
             }
         }, this);
+        BADGES = badgeThings.filter(function (o) {return o;});
         var groups = [];
         for (var groupName in groupInfo) {
             if (groupInfo.hasOwnProperty(groupName)) {
@@ -77,7 +80,8 @@ var Guide = React.createClass({
     },
     getInitialState: function() {
         return {
-            filterText: ''
+            filterText: '',
+            isDoneLoading: false
         };
     },
     componentDidMount: function() {
@@ -89,12 +93,12 @@ var Guide = React.createClass({
         });
     },
     render: function () {
-        if (this.state.badges)
+        if (this.state.isDoneLoading)
         {
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
-                <BadgeList badges={this.state.badges} groups={this.state.groups} filterText={this.state.filterText} />
+                <BadgeList badges={BADGES} filterText={this.state.filterText} />
                 </div>
             );
         } else {
