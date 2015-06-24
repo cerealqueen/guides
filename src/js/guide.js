@@ -52,12 +52,16 @@ var Guide = React.createClass({
                     isGroup: true,
                     createdAt: groupData.badges[groupData.badges.length - 1].createdAt
                 };
-                
+                var categoryTags = [];
+                groupItem.badges.forEach(function (badge) {
+                    categoryTags.concat(badge.categoryTags || []);
+                });
+                groupItem.categoryTags = $.unique(categoryTags);
                 groups.push(groupItem);
             }
         }
-        $.merge(badges, groups);
-        this.setState({badges: badges});
+        $.merge(BADGES, groups);
+        this.setState({isDoneLoading: true});
     },
     loadFilters: function(data) {
         if (!data || !data.length)

@@ -26,7 +26,7 @@ var BadgeItem = React.createClass({
             <div className="badgeItem">
             <BadgeImg badge={badgeObj} />
             <BadgeInfo badge={badgeObj} />
-            <Tags tags={badgeObj.isGroup ? badgeObj.badges[badgeObj.badges.length - 1].categoryTags : badgeObj.categoryTags} />
+            <Tags tags={badgeObj.categoryTags} />
             </div>
             </div>
             </div>
