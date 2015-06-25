@@ -66,19 +66,19 @@ var Guide = React.createClass({
         $.merge(BADGES, groups);
         this.setState({isDoneLoading: true});
     },
-    loadFilters: function(data) {
+    loadFilters: function (data) {
         if (!data || !data.length)
             return;
         var filters = data.slice();
         filters.sort();
         this.setState({filter:filters});
     },
-    loadGroups: function(data) {
+    loadGroups: function (data) {
         if (!data)
             return;
         this.setState({groups:data});
     },
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             filterText: '',
             isDoneLoading: false
@@ -87,7 +87,7 @@ var Guide = React.createClass({
     componentDidMount: function() {
         this.loadBadgeFile();
     },
-    handleUserInput: function(filterText) {
+    handleUserInput: function (filterText) {
         this.setState({
             filterText: filterText
         });
@@ -97,14 +97,14 @@ var Guide = React.createClass({
         {
             return (
                 <div>
-                <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
+                <NavBar filterText={this.state.filterText} onUserType={this.handleUserInput} />
                 <BadgeList badges={BADGES} filterText={this.state.filterText} />
                 </div>
             );
         } else {
             return (
                 <div>
-                <NavBar filterText={this.state.filterText} onUserInput={this.handleUserInput} />
+                <NavBar filterText={this.state.filterText} onUserType={this.handleUserInput} />
                 <div className="loading"><i className="fa fa-spinner fa-spin fa-2x"></i></div>
                 </div>
             );
