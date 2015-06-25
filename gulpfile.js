@@ -52,6 +52,8 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(path.DEST));
     gulp.src('*.txt')
         .pipe(gulp.dest(path.DEST));
+    gulp.src('*.md')
+        .pipe(gulp.dest(path.DEST));
 });
 
 gulp.task('watch', function () {    
