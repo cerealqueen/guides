@@ -103,7 +103,7 @@ gulp.task('pages', function () {
     gulp.src('*.md')
         .pipe(gulp.dest(path.DEST));
     return gulp.src('./dist/**/*')
-        .pipe(ghPages({push:false}));
+        .pipe(ghPages());
 });
 
 gulp.task('production', ['clean', 'copy' , 'replaceHTML', 'build']);
