@@ -12,4 +12,8 @@ before_script:
   - npm install watchify
   - npm install reactify
   - npm install gulp-streamify
-script: gulp ci
+script: 
+  - gulp ci
+  - npm test
+deploy:
+  - gulp deploy
