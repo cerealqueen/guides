@@ -15,5 +15,3 @@ before_script:
 script: 
   - gulp ci
   - npm test
-deploy:
-  - gulp deploy
