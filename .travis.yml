@@ -14,4 +14,3 @@ before_script:
   - npm install gulp-streamify
 script: 
   - gulp ci
-  - npm test
