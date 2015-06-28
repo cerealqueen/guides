@@ -3,9 +3,9 @@ var React = require('react');
 var BadgeImg = React.createClass({
     createImg: function (badge) {
         if (badge.link) {
-            return <a href={badge.link}><img className="badgeImg" src={badge.url} alt={badge.titleTag} onload="this.style.opacity='1';" /></a>
+            return <a key={badge.url} href={badge.link}><img className="badgeImg" src={badge.url} alt={badge.titleTag} onload="this.style.opacity='1';" /></a>
         } else {
-            return <img className="badgeImg" src={badge.url} alt={badge.titleTag} onload="this.style.opacity='1';" />;
+            return <img key={badge.url} className="badgeImg" src={badge.url} alt={badge.titleTag} onload="this.style.opacity='1';" />;
         }
     },
     render: function() {
