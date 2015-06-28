@@ -48,12 +48,14 @@ var Guide = React.createClass({
         for (var groupName in groupInfo) {
             if (groupInfo.hasOwnProperty(groupName)) {
                 var groupData = groupInfo[groupName];
+                var lastBadgeInGroup = groupData.badges[groupData.badges.length - 1];
                 var groupItem = {
+                    id: lastBadgeInGroup.id,
                     name: groupName,
                     title: groupData.title,
                     badges: groupData.badges,
                     isGroup: true,
-                    createdAt: groupData.badges[groupData.badges.length - 1].createdAt
+                    createdAt: lastBadgeInGroup.createdAt
                 };
                 var categoryTags = [];
                 groupItem.badges.forEach(function (badge) {
@@ -64,7 +66,14 @@ var Guide = React.createClass({
             }
         }
         $.merge(BADGES, groups);
-        BADGES.sort(this.sortBadges);
+        var isDescending = this.state.isDescending;
+        BADGES.sort(function (badgeA, badgeB) {
+            if (isDescending) {
+                return badgeB.id - badgeA.id;
+            } else {
+                return badgeA.id - badgeB.id;
+            }
+        });
         this.setState({isDoneLoading: true});
     },
     loadFilters: function (data) {
@@ -89,23 +98,21 @@ var Guide = React.createClass({
     componentDidMount: function() {
         this.loadBadgeFile();
     },
-    sortBadges: function (badgeA, badgeB) {
-        var dateA = badgeA.createdAt,
-            dateB = badgeB.createdAt;
-        if (this.state.isDescending) {
-            return dateB - dateA;
-        } else {
-            return dateA - dateB;
-        };
-    },
     handleUserInput: function (filterText) {
         this.setState({
             filterText: filterText
         });
     },
     handleSortDirectionSwitch: function (e) {
-        this.setState({isDescending: !this.state.isDescending || false});
-        BADGES.sort(this.sortBadges);
+        var isDescending = !this.state.isDescending || false;
+        BADGES.sort(function (badgeA, badgeB) {
+            if (isDescending) {
+                return badgeB.id - badgeA.id;
+            } else {
+                return badgeA.id - badgeB.id;
+            }
+        });
+        this.setState({isDescending:isDescending});
     },
     render: function () {
         if (this.state.isDoneLoading)
