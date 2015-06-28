@@ -64,6 +64,7 @@ var Guide = React.createClass({
             }
         }
         $.merge(BADGES, groups);
+        BADGES.sort(this.sortBadges);
         this.setState({isDoneLoading: true});
     },
     loadFilters: function (data) {
@@ -81,16 +82,30 @@ var Guide = React.createClass({
     getInitialState: function () {
         return {
             filterText: '',
-            isDoneLoading: false
+            isDoneLoading: false,
+            isDescending: true
         };
     },
     componentDidMount: function() {
         this.loadBadgeFile();
     },
+    sortBadges: function (badgeA, badgeB) {
+        var dateA = badgeA.createdAt,
+            dateB = badgeB.createdAt;
+        if (this.state.isDescending) {
+            return dateB - dateA;
+        } else {
+            return dateA - dateB;
+        };
+    },
     handleUserInput: function (filterText) {
         this.setState({
             filterText: filterText
         });
+    },
+    handleSortDirectionSwitch: function (e) {
+        this.setState({isDescending: !this.state.isDescending || false});
+        BADGES.sort(this.sortBadges);
     },
     render: function () {
         if (this.state.isDoneLoading)
@@ -98,7 +113,7 @@ var Guide = React.createClass({
             return (
                 <div>
                 <NavBar filterText={this.state.filterText} onUserType={this.handleUserInput} />
-                <BadgeList badges={BADGES} filterText={this.state.filterText} />
+                <BadgeList badges={BADGES} filterText={this.state.filterText} isDescending={this.state.isDescending} switchDirection={this.handleSortDirectionSwitch} />
                 </div>
             );
         } else {

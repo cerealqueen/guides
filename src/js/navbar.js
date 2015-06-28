@@ -2,7 +2,7 @@ var React = require('react');
 
 var NavBar = React.createClass({
     handleChange: function() {
-        this.props.onUserType(this.refs.filterTextInput.getDOMNode().value);
+        this.props.onUserType(React.findDOMNode(this.refs.filterTextInput).value);
     },
     render: function () {
         return (
