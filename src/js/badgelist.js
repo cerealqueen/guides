@@ -11,33 +11,24 @@ var BadgeList = React.createClass({
             regexFilter.test(badge.createdAt.getFullYear());
     },
     queryBadges: function (badge, index, badges) {
-        if (badge.isGroup) {
-            if (this.isMatch(badge)) {
-                return true;
-            } else {
-                var i = 0,
-                    len = badge.badges.length,
-                    b;
-                while (i < len) {
-                    b = badge.badges[i];
-                    if (this.isMatch(b))
-                        return true;
-                    i++;
-                }
-            }
-        } else if (this.isMatch(badge)) {
+        if (this.isMatch(badge)) {
             return true;
-        }
+        } else if (badge.isGroup) {
+            var i = 0,
+                len = badge.badges.length;
+            for (; i < len; i++) {
+                var b = badge.badges[i];
+                if (this.isMatch(b))
+                    return true;
+            }
+        }  
     },
     processBadges: function (badge, index, badges) {
-        var lastBadge = badges[index - 1],
-            lastDate;
+        var lastBadge = badges[index - 1];
         if (lastBadge) {
-            lastDate = lastBadge.createdAt;
+            var lastDate = lastBadge.createdAt;
         }
-        return (
-            <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} key={badge.id} />
-        );
+        return <BadgeItem key={badge.id} badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} />;
     },
     render: function() {
         var directionIcon = 'fa ' + (this.props.isDescending ? 'fa-caret-down' : 'fa-caret-up');
