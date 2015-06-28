@@ -10,44 +10,34 @@ var BadgeList = React.createClass({
             regexFilter.test(badge.categoryTags) ||
             regexFilter.test(badge.createdAt.getFullYear());
     },
-    processBadges: function (badge, index, badges) {
-        if (!badge) {
-            return;
+    queryBadges: function (badge, index, badges) {
+        if (badge.isGroup) {
+            if (this.isMatch(badge)) {
+                return true;
+            } else {
+                var i = 0,
+                    len = badge.badges.length,
+                    b;
+                while (i < len) {
+                    b = badge.badges[i];
+                    if (this.isMatch(b))
+                        return true;
+                    i++;
+                }
+            }
+        } else if (this.isMatch(badge)) {
+            return true;
         }
+    },
+    processBadges: function (badge, index, badges) {
         var lastBadge = badges[index - 1],
             lastDate;
         if (lastBadge) {
             lastDate = lastBadge.createdAt;
         }
-        if (this.props.filterText) {
-            if (badge.isGroup) {
-                if (this.isMatch(badge)) {
-                    return (
-                        <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} key={badge.id} />
-                    );
-                } else {
-                    var i = 0,
-                        len = badge.badges.length,
-                        b;
-                    while (i < len) {
-                        b = badge.badges[i];
-                        if (this.isMatch(b))
-                            return (
-                                <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} key={b.id} />
-                            );
-                        i++;
-                    }
-                }
-            } else if (this.isMatch(badge)) {
-                return (
-                    <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} key={badge.id} />
-                );
-            }
-        } else {
-            return (
-                <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} key={badge.id} />
-            );
-        }
+        return (
+            <BadgeItem badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} key={badge.id} />
+        );
     },
     render: function() {
         var directionIcon = 'fa ' + (this.props.isDescending ? 'fa-caret-down' : 'fa-caret-up');
@@ -60,11 +50,11 @@ var BadgeList = React.createClass({
             </div>
             </div>
             <div className="badgeList">
-            {this.props.badges.map(this.processBadges)}
-            </div>
-            </div>
-        );
-    }
-});
+            {this.props.filterText ? this.props.badges.filter(this.queryBadges).map(this.processBadges) : this.props.badges.map(this.processBadges)}
+    </div>
+    </div>
+    );
+}
+                                  });
 
 module.exports = BadgeList;
