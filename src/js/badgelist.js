@@ -28,28 +28,28 @@ var BadgeList = React.createClass({
         }  
     },
     processBadges: function (badge, index, badges) {
-        var lastBadge = badges[index - 1];
-        if (lastBadge) {
-            var lastDate = lastBadge.createdAt;
-        }
+        var lastBadge = badges[index - 1],
+            lastDate = lastBadge ? lastBadge.createdAt : undefined;
         return <BadgeItem key={badge.id} badges={badge} lastDate={lastDate} isDescending={this.props.isDescending} />;
     },
     render: function() {
-        var directionIcon = 'fa ' + (this.props.isDescending ? 'fa-caret-down' : 'fa-caret-up');
+        var directionIcon = 'fa ' + (this.props.isDescending ? 'fa-caret-down' : 'fa-caret-up'),
+            directionWord = this.props.isDescending ? 'Descending' : 'Ascending',
+            badges = this.props.filterText ? this.props.badges.filter(this.queryBadges).map(this.processBadges) : this.props.badges.map(this.processBadges);
         return (
             <div>
             <div className="sortContainer">
             By Creation Date:
             <div className="direction" onClick={this.props.switchDirection}>
-            <i className={directionIcon} /> {this.props.isDescending ? 'Descending' : 'Ascending'}
+            <i className={directionIcon} /> {directionWord}
             </div>
             </div>
             <div className="badgeList">
-            {this.props.filterText ? this.props.badges.filter(this.queryBadges).map(this.processBadges) : this.props.badges.map(this.processBadges)}
-    </div>
-    </div>
-    );
-}
-                                  });
+            {badges}
+            </div>
+            </div>
+        );
+    }
+});
 
 module.exports = BadgeList;

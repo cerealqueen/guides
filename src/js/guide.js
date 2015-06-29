@@ -15,6 +15,17 @@ var Guide = React.createClass({
                 this.loadFilters(data.filtered_badges || []);
                 this.loadGroups(data.groups || {});
                 this.loadBadges(data.badges || []);
+                
+                var isDescending = this.state.isDescending;
+                BADGES.sort(function (badgeA, badgeB) {
+                    if (isDescending) {
+                        return badgeB.id - badgeA.id;
+                    } else {
+                        return badgeA.id - badgeB.id;
+                    }
+                });
+                
+                this.setState({isDoneLoading: true});
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -68,15 +79,6 @@ var Guide = React.createClass({
             }
         }
         $.merge(BADGES, groups);
-        var isDescending = this.state.isDescending;
-        BADGES.sort(function (badgeA, badgeB) {
-            if (isDescending) {
-                return badgeB.id - badgeA.id;
-            } else {
-                return badgeA.id - badgeB.id;
-            }
-        });
-        this.setState({isDoneLoading: true});
     },
     loadFilters: function (data) {
         if (!data || !data.length)
