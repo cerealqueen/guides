@@ -35,19 +35,21 @@ var Guide = React.createClass({
                     if (groupInfo[b.group_id].badges === undefined)
                         groupInfo[b.group_id].badges = [];
                     groupInfo[b.group_id].badges.push(badge);
-                    groupInfo[b.group_id].badges.sort(function (badgeA, badgeB) {
-                        return badgeA.createdAt - badgeB.createdAt;
-                    });
                 } else {
                     return badge;
                 }
             }
         }, this);
+        
         BADGES = badgeThings.filter(function (o) {return o;});
+        
         var groups = [];
         for (var groupName in groupInfo) {
             if (groupInfo.hasOwnProperty(groupName)) {
                 var groupData = groupInfo[groupName];
+                groupData.badges.sort(function (badgeA, badgeB) {
+                    return badgeA.createdAt - badgeB.createdAt;
+                });
                 var lastBadgeInGroup = groupData.badges[groupData.badges.length - 1];
                 var groupItem = {
                     id: lastBadgeInGroup.id,
