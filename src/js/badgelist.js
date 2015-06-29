@@ -3,12 +3,16 @@ var BadgeItem = require('./badgeitem');
 
 var BadgeList = React.createClass({
     isMatch: function (badge) {
-        var regexFilter = new RegExp(this.props.filterText, 'i');
+        var filterString = this.escapeRegExp(this.props.filterText),
+            regexFilter = new RegExp(filterString, 'i');
         return regexFilter.test(badge.name) ||
             regexFilter.test(badge.title) ||
             regexFilter.test(badge.comment) ||
             regexFilter.test(badge.categoryTags) ||
             regexFilter.test(badge.createdAt.getFullYear());
+    },
+    escapeRegExp: function (string){
+        return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     },
     queryBadges: function (badge, index, badges) {
         if (this.isMatch(badge)) {
