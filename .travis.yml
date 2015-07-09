@@ -2,13 +2,19 @@ language: node_js
 node_js:
   - "0.11"
   - "0.10"
-  - "0.9"
-  - "0.8"
 env:
   - NODE_ENV=production
   - NODE_ENV=staging
 before_script:
   - npm install
   - npm install -g gulp
+  - npm install gulp-uglify
+  - npm install gulp-react
+  - npm install gulp-html-replace
+  - npm install vinyl-source-stream
+  - npm install browserify
+  - npm install watchify
+  - npm install reactify
+  - npm install gulp-streamify
 script: 
   - gulp ci
