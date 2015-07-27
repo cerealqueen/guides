@@ -5054,13 +5054,13 @@
             "comment": "Badge for Angela",
             "title_tag": "mew mew mew",
             "link": "",
-            "created_at": "2008-02-14 11:15:52",
-            "updated_at": "2008-02-14 11:15:52",
+            "created_at": "2015-06-28 23:10:14",
+            "updated_at": "2015-06-28 23:10:14",
             "category_tags": ["unique", "unobtainable"]
         },
         {
             "id": 464,
-            "name": "! SummerBound First Place",
+            "name": "SummerBound First Place",
             "URL": "http://local-static4.forum-files.fobby.net/forum_attachments/0039/1104/1st_anim.gif",
             "comment": "Placed first in their respective category during SummerBound 2015",
             "title_tag": "I won first prize during SummerBound 2015!",
@@ -5071,7 +5071,7 @@
         },
         {
             "id": 465,
-            "name": "! SummerBound Second Place",
+            "name": "SummerBound Second Place",
             "URL": "http://local-static3.forum-files.fobby.net/forum_attachments/0039/1113/2nd_anim.gif",
             "comment": "Placed second in their respective category during SummerBound 2015",
             "title_tag": "Second prize winner during SummerBound 2015!",
@@ -5082,7 +5082,7 @@
         },
         {
             "id": 466,
-            "name": "! SummerBound Third Place",
+            "name": "SummerBound Third Place",
             "URL": "http://local-static0.forum-files.fobby.net/forum_attachments/0039/1110/3rd.png",
             "comment": "Placed third in their respective category during SummerBound 2015",
             "title_tag": "Third prize winner during SummerBound 2015!",
@@ -5093,7 +5093,7 @@
         },
         {
             "id": 467,
-            "name": "! SummerBound Super Summery Saiyan Sun Chips",
+            "name": "SummerBound Super Summery Saiyan Sun Chips",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/4663/SaiyanChip.gif",
             "comment": "SUMMERIEST",
             "title_tag": "SUMMER FUN IN THE SUMMER SUN",
@@ -5104,7 +5104,7 @@
         },
         {
             "id": 468,
-            "name": "! SummerBound Sun Chip Participation",
+            "name": "SummerBound Sun Chip Participation",
             "URL": "http://local-static0.forum-files.fobby.net/forum_attachments/0039/1125/sunchips.png",
             "comment": "For participating you get these sun chips",
             "title_tag": "delicious summer participation",
@@ -5137,7 +5137,7 @@
         },
         {
             "id": 471,
-            "name": "!fairy frog",
+            "name": "fairy frog",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6257/FrogHelper.gif",
             "comment": "frog helper",
             "title_tag": "The prayers of all the red frogs were heard",
@@ -5148,7 +5148,7 @@
         },
         {
             "id": 472,
-            "name": "!ghost frog",
+            "name": "ghost frog",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6260/HereInSpirit.gif",
             "comment": "here in spirit",
             "title_tag": "Though they could not be there, they were there in spirit",
@@ -5159,7 +5159,7 @@
         },
         {
             "id": 473,
-            "name": "!sitting frog",
+            "name": "sitting frog",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6263/TookPictureSpirit.gif",
             "comment": "took picture of spirit",
             "title_tag": "Making Dreams Come True",
@@ -5170,7 +5170,7 @@
         },
         {
             "id": 474,
-            "name": "!White Mafia",
+            "name": "White Mafia",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/5435/tmp_25130-Mafia_Badge2-1868694650.png",
             "comment": "Mother 3 Mafia 2015 Participant",
             "title_tag": "Participated in MOTHER3 Mafia 2015",
@@ -5181,7 +5181,7 @@
         },
         {
             "id": 475,
-            "name": "!Silver Mafia",
+            "name": "Silver Mafia",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/5438/tmp_25130-Mafia_Badge6-433452939.png",
             "comment": "Mother 3 Mafia 2015 Victor",
             "title_tag": "MOTHER3 Mafia 2015 Victor!",
@@ -5192,7 +5192,7 @@
         },
         {
             "id": 476,
-            "name": "!Merch Museum",
+            "name": "Merch Museum",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6726/Merch_Museum.png",
             "comment": "Helped with the merch museum",
             "title_tag": "MOTHER Merchandise Museum Patron DX",
@@ -5203,7 +5203,7 @@
         },
         {
             "id": 477,
-            "name": "!Vid's CFG Ghost Pepper",
+            "name": "Vid's CFG Ghost Pepper",
             "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6732/ghostlypepper.png",
             "comment": "vid ate a ghost pepper at camp fangamer",
             "title_tag": "OBLIGATE! OBLIGATE! OBLIGATE!",
