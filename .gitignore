@@ -1,0 +1,11 @@
+*
+!*.md
+!CNAME
+!*.png
+!*.min.js
+!*.txt
+!*.html
+!*.ico
+!*.svg
+!*.json
+!*.css
