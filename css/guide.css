@@ -64,7 +64,7 @@ input[type=search]:focus {
     box-shadow: 0 0 5px rgba(109,207,246,.5);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 483px) {
     input[type=search]:focus {
         width: 130px;
     }
@@ -98,6 +98,7 @@ input::-webkit-input-placeholder {
     float: left;
     margin-top: 0.5em;
     margin-left: 0.5em;
+    width: 40%;
 }
 
 .starmen > img {
@@ -107,6 +108,7 @@ input::-webkit-input-placeholder {
     animation: bounce 0.6s ease-in-out;
     color: white;
     opacity: 0.5;
+    margin-right: 0;
     filter: alpha(opacity=50);
 }
 

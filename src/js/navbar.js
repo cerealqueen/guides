@@ -10,7 +10,7 @@ var NavBar = React.createClass({
             <div className="navbar">
             <ul>
             <li className="links">
-            <a className="starmen" href="http://starmen.net"><img src="http://local-static3.forum-files.fobby.net/forum_attachments/0030/1383/chompy_mod.gif" alt="Starmen.net"/></a>
+            <a className="starmen" href="http://starmen.net"><img src="../img/logo-starmen.svg" alt="Starmen.net"/></a>
             </li>
             <li className="search">
             <input type="search" placeholder="Search" value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />

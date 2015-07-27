@@ -5,6 +5,9 @@
         From: New Bedford, Massachusetts, United States
 
 /* THANKS */
+        Logo Designer: Kris Rubiano
+        Twitter: @krystleis
+
         Data Miner: Tyler Phelan
         Twitter: @helloiamarfy
 
@@ -16,4 +19,4 @@
         Language: English
         Standards: HTML5, CSS3, ES5.1
         Components: React, Node, Gulp, Jest
-        IDE: Brackets
+        Edited in: Sublime Text 3, Brackets
