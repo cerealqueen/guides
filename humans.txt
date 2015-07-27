@@ -5,7 +5,7 @@
         From: New Bedford, Massachusetts, United States
 
 /* THANKS */
-        Logo Designer: Kris Rubiano
+        Logo Designer: Kris
         Twitter: @krystleis
 
         Data Miner: Tyler Phelan
