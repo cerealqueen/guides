@@ -5002,6 +5002,215 @@
             "created_at": "2015-06-05 23:10:12",
             "updated_at": "2015-06-05 23:10:12",
             "category_tags": ["unobtainable"]
+        },
+        {
+            "id": 459,
+            "name": "Marietta got 2 tipsy",
+            "URL": "http://local-static3.forum-files.fobby.net/forum_attachments/0039/1888/MariettaIll.png",
+            "comment": "She took a shot every time Sith died during Summerbound GPP2",
+            "title_tag": "DON'T WORRU I'M FINE",
+            "link": "",
+            "created_at": "2015-06-06 23:10:12",
+            "updated_at": "2015-06-06 23:10:12",
+            "category_tags": ["unique", "unobtainable"]
+        },
+        {
+            "id": 460,
+            "name": "Karen I'm Sorry",
+            "URL": "http://local-static0.forum-files.fobby.net/forum_attachments/0039/2825/KARENIMSORRY.png",
+            "comment": "Don't drink and drive kids",
+            "title_tag": "KAREN I'M SORRY",
+            "link": "",
+            "created_at": "2015-06-06 23:10:12",
+            "updated_at": "2015-06-06 23:10:12",
+            "category_tags": ["unique", "unobtainable"]
+        },
+        {
+            "id": 461,
+            "name": "Buck's Birthday Badge Bonanza Bazinga",
+            "URL": "http://local-static4.forum-files.fobby.net/forum_attachments/0039/3484/birfday_cakem.png",
+            "comment": "Given out during Summerbound GPP10 for writing bad fanfiction about Hobo and Buck Fever",
+            "title_tag": "A slice of Buck Fever's Favorite Birthday Cake",
+            "link": "",
+            "created_at": "2015-06-20 23:10:12",
+            "updated_at": "2015-06-20 23:10:12",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {
+            "id": 462,
+            "name": "Puppy",
+            "URL": "https://starmen.net/badgevatars/badges/puppybadge.png",
+            "comment": "SB badge",
+            "title_tag": "bark bark bark",
+            "link": "",
+            "created_at": "2015-06-28 23:10:12",
+            "updated_at": "2015-06-28 23:10:12",
+            "category_tags": ["unique", "unobtainable"]
+        },
+        {
+            "id": 463,
+            "name": "Kitty",
+            "URL": "https://starmen.net/badgevatars/badges/kittybadge.png",
+            "comment": "Badge for Angela",
+            "title_tag": "mew mew mew",
+            "link": "",
+            "created_at": "2008-02-14 11:15:52",
+            "updated_at": "2008-02-14 11:15:52",
+            "category_tags": ["unique", "unobtainable"]
+        },
+        {
+            "id": 464,
+            "name": "! SummerBound First Place",
+            "URL": "http://local-static4.forum-files.fobby.net/forum_attachments/0039/1104/1st_anim.gif",
+            "comment": "Placed first in their respective category during SummerBound 2015",
+            "title_tag": "I won first prize during SummerBound 2015!",
+            "link": "",
+            "created_at": "2015-06-28 23:10:15",
+            "updated_at": "2015-06-28 23:10:15",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {
+            "id": 465,
+            "name": "! SummerBound Second Place",
+            "URL": "http://local-static3.forum-files.fobby.net/forum_attachments/0039/1113/2nd_anim.gif",
+            "comment": "Placed second in their respective category during SummerBound 2015",
+            "title_tag": "Second prize winner during SummerBound 2015!",
+            "link": "",
+            "created_at": "2015-07-09 23:10:15",
+            "updated_at": "2015-07-09 23:10:15",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {
+            "id": 466,
+            "name": "! SummerBound Third Place",
+            "URL": "http://local-static0.forum-files.fobby.net/forum_attachments/0039/1110/3rd.png",
+            "comment": "Placed third in their respective category during SummerBound 2015",
+            "title_tag": "Third prize winner during SummerBound 2015!",
+            "link": "",
+            "created_at": "2015-07-09 23:10:17",
+            "updated_at": "2015-07-09 23:10:17",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {
+            "id": 467,
+            "name": "! SummerBound Super Summery Saiyan Sun Chips",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/4663/SaiyanChip.gif",
+            "comment": "SUMMERIEST",
+            "title_tag": "SUMMER FUN IN THE SUMMER SUN",
+            "link": "",
+            "created_at": "2015-07-09 23:10:19",
+            "updated_at": "2015-07-09 23:10:19",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {
+            "id": 468,
+            "name": "! SummerBound Sun Chip Participation",
+            "URL": "http://local-static0.forum-files.fobby.net/forum_attachments/0039/1125/sunchips.png",
+            "comment": "For participating you get these sun chips",
+            "title_tag": "delicious summer participation",
+            "link": "",
+            "created_at": "2015-07-09 23:10:21",
+            "updated_at": "2015-07-09 23:10:21",
+            "category_tags": ["events"]
+        },
+        {
+            "id": 469,
+            "name": "SummerBound Super Helper Umbrella",
+            "URL": "http://local-static0.forum-files.fobby.net/forum_attachments/0039/0990/umbrellaspin.gif",
+            "comment": "Helped make SummerBound 2015 a success",
+            "title_tag": "keepin' it cool all summer long",
+            "link": "",
+            "created_at": "2015-07-09 23:10:23",
+            "updated_at": "2015-07-09 23:10:23",
+            "category_tags": ["events"]
+        },
+        {
+            "id": 470,
+            "name": "B&Tasty",
+            "URL": "http://realearthbound.net/tasty.png",
+            "comment": "",
+            "title_tag": "Beauty & Tasty",
+            "link": "",
+            "created_at": "2015-07-14 23:10:12",
+            "updated_at": "2015-07-14 23:10:12",
+            "category_tags": ["unobtainable"]
+        },
+        {
+            "id": 471,
+            "name": "!fairy frog",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6257/FrogHelper.gif",
+            "comment": "frog helper",
+            "title_tag": "The prayers of all the red frogs were heard",
+            "link": "",
+            "created_at": "2015-07-26 02:10:12",
+            "updated_at": "2015-07-26 02:10:12",
+            "category_tags": ["events", "unobtainable"]
+        },
+        {
+            "id": 472,
+            "name": "!ghost frog",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6260/HereInSpirit.gif",
+            "comment": "here in spirit",
+            "title_tag": "Though they could not be there, they were there in spirit",
+            "link": "",
+            "created_at": "2015-07-26 02:10:15",
+            "updated_at": "2015-07-26 02:10:15",
+            "category_tags": ["events", "unobtainable"]
+        },
+        {
+            "id": 473,
+            "name": "!sitting frog",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6263/TookPictureSpirit.gif",
+            "comment": "took picture of spirit",
+            "title_tag": "Making Dreams Come True",
+            "link": "",
+            "created_at": "2015-07-26 02:10:18",
+            "updated_at": "2015-07-26 02:10:18",
+            "category_tags": ["events", "unobtainable"]
+        },
+        {
+            "id": 474,
+            "name": "!White Mafia",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/5435/tmp_25130-Mafia_Badge2-1868694650.png",
+            "comment": "Mother 3 Mafia 2015 Participant",
+            "title_tag": "Participated in MOTHER3 Mafia 2015",
+            "link": "",
+            "created_at": "2015-07-26 02:11:21",
+            "updated_at": "2015-07-26 02:11:21",
+            "category_tags": ["events", "unobtainable"]
+        },
+        {
+            "id": 475,
+            "name": "!Silver Mafia",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/5438/tmp_25130-Mafia_Badge6-433452939.png",
+            "comment": "Mother 3 Mafia 2015 Victor",
+            "title_tag": "MOTHER3 Mafia 2015 Victor!",
+            "link": "",
+            "created_at": "2015-07-26 02:11:25",
+            "updated_at": "2015-07-26 02:11:25",
+            "category_tags": ["events", "unobtainable"]
+        },
+        {
+            "id": 476,
+            "name": "!Merch Museum",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6726/Merch_Museum.png",
+            "comment": "Helped with the merch museum",
+            "title_tag": "MOTHER Merchandise Museum Patron DX",
+            "link": "",
+            "created_at": "2015-07-26 02:11:28",
+            "updated_at": "2015-07-26 02:11:28",
+            "category_tags": ["events", "unobtainable"]
+        },
+        {
+            "id": 477,
+            "name": "!Vid's CFG Ghost Pepper",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/6732/ghostlypepper.png",
+            "comment": "vid ate a ghost pepper at camp fangamer",
+            "title_tag": "OBLIGATE! OBLIGATE! OBLIGATE!",
+            "link": "",
+            "created_at": "2015-07-26 02:11:35",
+            "updated_at": "2015-07-26 02:11:35",
+            "category_tags": ["events", "unobtainable"]
         }
     ],
     "groups":{
@@ -5012,5 +5221,5 @@
             "title":"Fanvatar badges"
         }
     },
-    "filtered_badges":[5, 6, 44, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 179, 192, 281, 262, 286, 287, 288, 289, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 361]
+    "filtered_badges":[5, 6, 44, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 179, 192, 281, 262, 286, 287, 288, 289, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 361, 470]
 }
