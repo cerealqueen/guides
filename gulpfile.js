@@ -111,7 +111,9 @@ gulp.task('pages', function () {
     gulp.src('*.md')
         .pipe(gulp.dest(path.DEST));
     return gulp.src('./dist/**/*')
-        .pipe(ghPages());
+        .pipe(ghPages({
+            remoteUrl:'https://'+process.env.secure+'@'+process.env.GH_REF;
+        }));
 });
 
 gulp.task('ci', ['clean', 'set-prod-node-env', 'copy', 'replaceHTML', 'build']);

@@ -1,6 +1,13 @@
 language: node_js
 node_js:
   - "0.10"
+env:
+  global:
+    - GH_REF: github.com/aaronsky/badges.git
+    - secure: "I9FaNXEeb8xRqLos0veuuifl8eCjDSd6+Y4rx25Lyet+lwoJppEwz1SyRZHOiHdU/wtskwNr9e0L17LHYGWrn7m6eK2QKSN94QxIyzJXXnIhe/CEYA1G91+Z+z9O06UIJZweMIxRpq8CrwbATEPZMsaFO1oV/McRMIUwo71J/9Y="
+branches:
+  except:
+    - gh-pages
 before_script:
   - npm install -g gulp
   - npm install gulp-uglify
@@ -13,3 +20,7 @@ before_script:
   - npm install gulp-streamify
 script: 
   - gulp ci
+after_success:
+  - git config user.name "Travis CI"
+  - git config user.email "aaronsky@skyaaron.com"
+  - gulp deploy
