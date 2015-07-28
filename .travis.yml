@@ -13,5 +13,3 @@ before_script:
   - npm install gulp-streamify
 script: 
   - gulp ci
-after_success:
-  - gulp deploy
