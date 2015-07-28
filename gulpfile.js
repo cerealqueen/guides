@@ -112,7 +112,7 @@ gulp.task('pages', function () {
         .pipe(gulp.dest(path.DEST));
     return gulp.src('./dist/**/*')
         .pipe(ghPages({
-            remoteUrl: 'https://' + process.env.GH_TOKEN + '@github.com/aaronsky/badges.git'
+            remoteUrl: 'https://' + (process.env.GH_TOKEN || 'aaronsky')+ '@github.com/aaronsky/badges.git'
         }));
 });
 
