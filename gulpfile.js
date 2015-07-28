@@ -56,6 +56,14 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(path.DEST));
 });
 
+gulp.task('set-dev-node-env', function() {
+    return process.env.NODE_ENV = 'development';
+});
+
+gulp.task('set-prod-node-env', function() {
+    return process.env.NODE_ENV = 'production';
+});
+
 gulp.task('watch', function () {    
     gulp.watch([path.HTML, path.CSS, path.DATA, path.IMG], ['copy']);
 
@@ -106,10 +114,8 @@ gulp.task('pages', function () {
         .pipe(ghPages());
 });
 
-gulp.task('production', ['clean', 'copy' , 'replaceHTML', 'build']);
+gulp.task('ci', ['clean', 'set-prod-node-env' 'copy', 'replaceHTML', 'build']);
 
-gulp.task('ci', ['clean', 'copy', 'replaceHTML', 'build']);
+gulp.task('default', ['clean', 'set-dev-node-env', 'copy', 'watch']);
 
-gulp.task('default', ['clean', 'watch']);
-
-gulp.task('deploy', ['clean', 'copy', 'replaceHTML', 'build', 'pages']);
+gulp.task('deploy', ['clean', 'set-prod-node-env', 'copy', 'replaceHTML', 'build', 'pages']);
