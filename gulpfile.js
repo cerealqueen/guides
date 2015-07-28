@@ -114,7 +114,7 @@ gulp.task('pages', function () {
         .pipe(ghPages());
 });
 
-gulp.task('ci', ['clean', 'set-prod-node-env' 'copy', 'replaceHTML', 'build']);
+gulp.task('ci', ['clean', 'set-prod-node-env', 'copy', 'replaceHTML', 'build']);
 
 gulp.task('default', ['clean', 'set-dev-node-env', 'copy', 'watch']);
 
