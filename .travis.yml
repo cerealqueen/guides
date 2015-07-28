@@ -1,26 +1,25 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 env:
   global:
-    - GH_REF: github.com/aaronsky/badges.git
-    - secure: "I9FaNXEeb8xRqLos0veuuifl8eCjDSd6+Y4rx25Lyet+lwoJppEwz1SyRZHOiHdU/wtskwNr9e0L17LHYGWrn7m6eK2QKSN94QxIyzJXXnIhe/CEYA1G91+Z+z9O06UIJZweMIxRpq8CrwbATEPZMsaFO1oV/McRMIUwo71J/9Y="
+    secure: DUk6UBMUJyV5hdNJwn4ucMx8wt5R+qVJChC0KGIhnCdQfkNRAEWt0qVEfV4BHX+MG0Wx2BDDq2WtSFGPwYF/n7UTIyaAD8Si/pHPVQNQwu88soLy94aBHI82ddAOFM9wD2Ov+JyzUWqPRi0tG7IO4wQkiBDyPE3Jki6vf03qxt0=
 branches:
-  except:
-    - gh-pages
+  only:
+  - master
 before_script:
-  - npm install -g gulp
-  - npm install gulp-uglify
-  - npm install gulp-react
-  - npm install gulp-html-replace
-  - npm install vinyl-source-stream
-  - npm install browserify
-  - npm install watchify
-  - npm install reactify
-  - npm install gulp-streamify
-script: 
-  - gulp ci
+- npm install -g gulp
+- npm install gulp-uglify
+- npm install gulp-react
+- npm install gulp-html-replace
+- npm install vinyl-source-stream
+- npm install browserify
+- npm install watchify
+- npm install reactify
+- npm install gulp-streamify
+script:
+- gulp ci
 after_success:
-  - git config user.name "Travis CI"
-  - git config user.email "aaronsky@skyaaron.com"
-  - gulp deploy
+- git config --global user.name "Travis CI"
+- git config --global user.email "aaronsky@skyaaron.com"
+- gulp deploy
