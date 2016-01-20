@@ -4841,7 +4841,7 @@
         {
             "id": 444,
             "name": "PKBeats Final Unique Badge",
-            "URL": "http://hobo.waluigiworld.com/badgehidegif.php?q=pkbeats",
+            "URL": "http://hobo.waluigiworld.com/badges/pkbeats.gif",
             "comment": "gettin real tired of this",
             "title_tag": "Reality is subjective",
             "link": "http://forum.starmen.net/forum/Fan/Forum/ART-COLLAB-We-Can-Do-It/first",
@@ -5211,7 +5211,18 @@
             "created_at": "2015-07-26 02:11:35",
             "updated_at": "2015-07-26 02:11:35",
             "category_tags": ["events", "unobtainable"]
-        }
+        },       
+        {
+            "id": 478,
+            "name": "Project Ultimate Chimera Helper",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/5668/BucketBros.gif",
+            "comment": "Participated in Project Ultimate Chimera",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-08-09 19:38:34",
+            "updated_at": "2015-08-09 19:38:34",
+            "category_tags": ["events"]
+        }            
     ],
     "groups":{
         "donor": {
