@@ -5233,7 +5233,183 @@
             "created_at": "2015-08-09 19:52:00",
             "updated_at": "2015-08-09 19:52:00",
             "category_tags": ["events"]
+        },
+        {
+            "id": 480,
+            "name": "Franklin Badge Gold",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/7891/badgey1.png",
+            "comment": "MOTHER Franklin Badge",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-08-09 23:50:54",
+            "updated_at": "2015-08-09 23:50:54",
+            "category_tags": ["events"]
+        },
+        {
+            "id": 481,
+            "name": "Franklin Badge White",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/7894/badgey2.png",
+            "comment": "White Franklin Badge",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-08-09 23:51:13",
+            "updated_at": "2015-08-09 23:51:13",
+            "category_tags": ["events"]
+        },
+        {
+            "id": 482,
+            "name": "Franklin Badge Guide",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/7942/FrankyBoy.png",
+            "comment": "EarthBound Guide Franklin Badge",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-08-09 23:58:55",
+            "updated_at": "2015-08-09 23:58:55",
+            "category_tags": ["events"]
+        },
+        {
+            "id": 483,
+            "name": "Franklin Badge MOTHER3",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/7939/fRANKLIN3.png",
+            "comment": "MOTHER3 Franklin Badge",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-08-09 23:59:16",
+            "updated_at": "2015-08-09 23:59:16",
+            "category_tags": ["events"]
+        },
+        {
+            "id": 484,
+            "name": "Beary Best Friend",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/9644/bearbdge.png",
+            "comment": "For Mutaharu because bears",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-09-03 04:30:16",
+            "updated_at": "2015-09-03 04:30:16",
+            "category_tags": ["unique"], ["unobtainable"]
+        },
+        {
+            "id": 485,
+            "name": "Pink DK",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/0433/isweartogodyoustupidgorilla.png",
+            "comment": "GO-RILL-AS. Boil 'em, mash 'em, stick 'em in a stew!",
+            "title_tag": "For participants in the Pink Donkey Kong collaboration",
+            "link": "https://forum.starmen.net/forum/Fan/Forum/The-Pink-Donkey-Kong-Art-Collab/page/3#post2102344",
+            "created_at": "2015-09-09 01:55:42",
+            "updated_at": "2015-10-12 00:54:36",
+            "category_tags": ["events"], ["unobtainable"]
+        },
+        {
+            "id": 486,
+            "name": "Sean Connery Squirrel",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/0436/sean.gif",
+            "comment": "more like FUNFOUNDED.",
+            "title_tag": "a badge for people who did a nice thing for UR",
+            "link": "",
+            "created_at": "2015-09-09 02:01:39",
+            "updated_at": "2015-10-12 00:54:40",
+            "category_tags": ["current"]
+        },
+        {
+            "id": 487,
+            "name": "Undertale",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/0266/tobyfox.gif",
+            "comment": "He made Undertale",
+            "title_tag": "(He doesn't know what to say)",
+            "link": "http://undertale.com/",
+            "created_at": "2015-09-10 21:54:07",
+            "updated_at": "2015-09-10 21:54:07",
+            "category_tags": ["unique"], ["unobtainable"]
+        },
+        {
+            "id": 488,
+            "name": "Dios Dance",
+            "URL": "https://starmen.net/badgevatars/avatars/diosbadge2.gif",
+            "comment": "",
+            "title_tag": "",
+            "link": "",
+            "created_at": "2015-09-29 16:36:54",
+            "updated_at": "2015-09-29 16:36:54",
+            "category_tags": ["unique"], ["unobtainable"]
+        },
+        {
+            "id": 489,
+            "name": "Theoryfest Helper",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/5198/theoryfeststaffbadge3.gif",
+            "comment": "People that helped with Theoryfest",
+            "title_tag": "We represent the Theoryfest guild~",
+            "link": "",
+            "created_at": "2015-11-06 21:36:45",
+            "updated_at": "2015-11-25 05:28:41",
+            "category_tags": ["funfests"], ["unobtainable"]
+        },
+        {
+            "id": 490,
+            "name": "Theoryfest First Place",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/4311/firstplaceboo.gif"
+            "comment": "First place winner in Theoryfest",
+            "title_tag": "Most Awesome! 1st Place Winner, Theoryfest 2015",
+            "link": "",
+            "created_at": "2015-11-06 21:43:28",
+            "updated_at": "2015-11-06 21:47:04",
+            "category_tags": ["funfests"], ["unobtainable"]
+        },
+        {
+            "id": 491,
+            "name": "Theoryfest Second Place",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/4314/secondplaceboo.gif"
+            "comment": "Second place winner in Theoryfest",
+            "title_tag": "Most Awesome Runner-up! 2nd Place Winner, Theoryfest 2015",
+            "link": "",
+            "created_at": "2015-11-06 21:54:17",
+            "updated_at": "2015-11-06 21:47:04",
+            "category_tags": ["funfests"], ["unobtainable"]
+        },
+        {
+            "id": 492,
+            "name": "Theoryfest Third Place",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/4317/thirdplaceboo.gif"
+            "comment": "Third place winner in Theoryfest",
+            "title_tag": "Awesomeness Personified! 3rd Place Winner, Theoryfest 2015",
+            "link": "",
+            "created_at": "2015-11-06 22:16:04",
+            "updated_at": "2015-11-06 22:17:37",
+            "category_tags": ["funfests"], ["unobtainable"]
+        },        
+        {
+            "id": 493,
+            "name": "Undertale Riddles",
+            "URL": "https://dl.dropboxusercontent.com/u/13884872/UTRiddlesBadge.gif"
+            "comment": "For Being Winner 3 Happens",
+            "title_tag": "Who needs legs when I have riddles like these??????????",
+            "link": "",
+            "created_at": "2015-11-15 19:45:02",
+            "updated_at": "2015-11-15 19:46:09",
+            "category_tags": ["current"]
+        },
+        {
+            "id": 494,
+            "name": "Translation Guide Badge",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0039/8961/ness_localization.png"
+            "comment": "Translation Guide Writer!",
+            "title_tag": "Translation Guide Writer!",
+            "link": "",
+            "created_at": "2015-12-08 21:18:16",
+            "updated_at": "2015-12-08 21:19:07",
+            "category_tags": ["current"]
+        },
+        {
+            "id": 495,
+            "name": "Translator Badge",
+            "URL": "https://dl.dropboxusercontent.com/u/13884872/LocalizationBadge1.gif"
+            "comment": "EarthBound Translator Extraordinaire",
+            "title_tag": "EarthBound Translator Extraordinaire",
+            "link": "",
+            "created_at": "2015-12-08 21:18:57",
+            "updated_at": "2015-12-08 21:18:57",
         }
+            "category_tags": ["current"]
     ],
     "groups":{
         "donor": {
@@ -5243,5 +5419,5 @@
             "title":"Fanvatar badges"
         }
     },
-    "filtered_badges":[5, 6, 44, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 179, 192, 281, 262, 286, 287, 288, 289, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 361, 470]
+    "filtered_badges":[5, 6, 44, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 179, 192, 281, 262, 286, 287, 288, 289, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 361, 470, 480, 481, 482, 483, 488]
 }
