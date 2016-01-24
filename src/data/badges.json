@@ -5409,6 +5409,61 @@
             "created_at": "2015-12-08 21:18:57",
             "updated_at": "2015-12-08 21:18:57",
             "category_tags": ["current"]
+        },
+        {            
+            "id": 496,
+            "name": "Snowdin1st",
+            "URL": "https://dl.dropboxusercontent.com/u/13884872/trophy-gold.gif",
+            "comment": "For first place winners in the Snowdin Winter Funfest",
+            "title_tag": "I got first place in the Snowdin Fest!",
+            "link": "",
+            "created_at": "2016-1-24 17:16:04",
+            "updated_at": "2016-1-24 17:16:04",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {                    
+            "id": 497,
+            "name": "Snowdin2nd",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/4522/trophy-silver-2.gif",
+            "comment": "For second place winners in the Snowdin Winter Funfest",
+            "title_tag": "I got second place in the Snowdin Fest!",
+            "link": "",
+            "created_at": "2016-1-24 17:24:06",
+            "updated_at": "2016-1-24 17:24:06",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {            
+            "id": 498,
+            "name": "Snowdin3rd",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/4525/trophy-bronze-3.gif",
+            "comment": "For third place winners in the Snowdin Winter Funfest",
+            "title_tag": "I got third place in the Snowdin Fest!",
+            "link": "",
+            "created_at": "2016-1-24 17:26:24",
+            "updated_at": "2016-1-24 17:26:24",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {            
+            "id": 499,
+            "name": "Most Wintery",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/7842/SNOWDINWINTERYBADGE.gif",
+            "comment": "For submissions deemed "most wintery" in the Snowdin Winter Funfest",
+            "title_tag": "Most Wintery in a fest? It's snow joke!",
+            "link": "",
+            "created_at": "2016-1-24 17:30:24",
+            "updated_at": "2016-1-24 17:30:24",
+            "category_tags": ["funfests", "unobtainable"]
+        },
+        {            
+            "id": 500,
+            "name": "Temmie",
+            "URL": "https://ssl-forum-files.fobby.net/forum_attachments/0040/4332/temmas.gif",
+            "comment": "For event helpers in the Snowdin Winter Funfest",
+            "title_tag": "temie so prod of u for hepling",
+            "link": "",
+            "created_at": "2016-1-24 17:35:39",
+            "updated_at": "2016-1-24 17:35:39",
+            "category_tags": ["funfests", "unobtainable"]
         }
     ],
     "groups":{
