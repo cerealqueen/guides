@@ -1,7 +1,7 @@
 export interface Badge {
     name: string;
     url: string;
-    id?: string;
+    id?: number;
     comment?: string;
     title?: string;
     link?: string;
@@ -9,4 +9,5 @@ export interface Badge {
     createdAt?: Date;
     categoryTags?: string[];
     isGroup?: boolean;
+    badges?: Badge[]
 }

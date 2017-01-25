@@ -22,7 +22,7 @@ export class Navbar extends React.Component<NavbarProps, undefined> {
                     <a className="starmen" href="http://starmen.net">
                         <img src="http://metc.fobby.net/badges/img/logo-starmen.svg" alt="Starmen.net" />
                     </a>
-                    <input className="search" type="search" placeholder="Search" value={this.props.filterText} refs={input => this.ctrls.input = input} onChange={this.handleChange} />
+                    <input className="search" type="search" placeholder="Search" value={this.props.filterText} ref={input => this.ctrls.input = input} onChange={this.handleChange} />
                     <a className="github" href="https://github.com/aaronsky500/starmen-badge-guide"><i className="fa fa-github fa-2x"></i></a>
                 </div>
             </header>

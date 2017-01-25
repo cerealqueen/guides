@@ -25,7 +25,7 @@ export class BadgeRow extends React.Component<BadgeRowProps, undefined> {
 
     createImage(badge: Badge) {
         const image = (
-                <img style={styles.badgeImg} src={badge.url} alt={badge.titleTag} />
+                <img style={styles.badgeImg} src={badge.url} alt={badge.title} />
                 );
         if (badge.link) {
             return (

@@ -55,8 +55,8 @@ export class Guide extends React.Component<GuideProps, GuideState> {
         return regexFilter.test(badge.name) ||
                 regexFilter.test(badge.title) ||
                 regexFilter.test(badge.comment) ||
-                regexFilter.test(badge.categoryTags) ||
-                regexFilter.test(badge.createdAt.getFullYear());
+                regexFilter.test(badge.categoryTags.join()) ||
+                regexFilter.test(badge.createdAt.getFullYear().toString());
     }
 
     escapeRegExp(string: string) {
@@ -141,7 +141,7 @@ const styles = {
         margin: '1em auto',
         width: '80%',
         color: '#a4eda9',
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
         textAlign: 'right'
     },
     direction: {
