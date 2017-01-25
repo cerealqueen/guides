@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 import { Navbar } from './Navbar';
 import { BadgeRow } from './BadgeRow';
@@ -103,20 +104,20 @@ export class Guide extends React.Component<GuideProps, GuideState> {
 
             return (
                  <div>
-                    <div style={styles.sortContainer}>
+                    <div className="sortContainer">
                         By Creation Date:
-                        <div style={styles.direction} onClick={this.handleSortDirectionToggle}>
+                        <div className="direction" onClick={this.handleSortDirectionToggle.bind(this)}>
                             <i className={directionIcon} /> {directionWord}
                         </div>
                     </div>
-                    <div style={styles.badgeList}>
+                    <div className="badgeList">
                         {badges}
                     </div>
                 </div>
             );
         }
         return (
-            <div style={styles.loading}>
+            <div className="loading">
                 <i className="fa fa-spinner fa-spin fa-2x" />
             </div>
         );
@@ -135,25 +136,3 @@ export class Guide extends React.Component<GuideProps, GuideState> {
         );
     }
 }
-
-const styles = {
-    sortContainer: {
-        margin: '1em auto',
-        width: '80%',
-        color: '#a4eda9',
-        //fontWeight: 'bold',
-        textAlign: 'right'
-    },
-    direction: {
-        cursor: 'pointer',
-        display: 'inline-block',
-        paddingLeft: 10
-    },
-    badgeList: {
-
-    },
-    loading: {
-        margin: '1em auto',
-        textAlign: 'center'
-    }
-};
