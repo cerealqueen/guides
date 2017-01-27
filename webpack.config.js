@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './app/index.ts',
     output: { path: `${__dirname}/dist`, filename: 'bundle.js' },
     devtool: 'source-map',
     debug: true,

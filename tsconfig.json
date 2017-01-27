@@ -1,13 +1,20 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
+        "outDir": "./dist",
+        "rootDir": "./app",
         "sourceMap": true,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "es5",
-        "jsx": "react"
+        "moduleResolution": "node",
+        "target": "es6",
+        "jsx": "react",
+        "pretty": true
     },
-    "include": [
-        "./src/**/*"
+    "exclude": [
+        ".github",
+        ".vscode",
+        "node_modules",
+        "css",
+        "dist"
     ]
 }

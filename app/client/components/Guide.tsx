@@ -5,14 +5,10 @@ import { Navbar } from './Navbar';
 import { BadgeRow } from './BadgeRow';
 import { Badge } from '../models';
 
-export class Guide extends React.Component<any, undefined> {
-    constructor(props: GuideProps) {
-        super(props);
-    }
-    
+export class Guide extends React.Component<any, undefined> {    
     async componentDidMount() {
         if (this.props.badges.length === 0 && this.props.filter.length === '') {
-            await loadBadges();
+            await this.loadBadges();
         }
     }
 
@@ -42,7 +38,7 @@ export class Guide extends React.Component<any, undefined> {
         } else if (badge.isGroup) {
             for (let i = 0; i < badge.badges.length; i++) {
                 const b = badge.badges[i];
-                if (this.isMatch(b)) {
+                if (this.isMatch(b, this.props.filter)) {
                     return true;
                 }
             }

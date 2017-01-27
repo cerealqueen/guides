@@ -25,9 +25,9 @@ export class Navbar extends React.Component<NavbarProps, undefined> {
                         className="search" 
                         type="search" 
                         placeholder="Search" 
-                        value={this.props.filter} 
+                        value={this.props.app.filter} 
                         ref={input => this.ctrls.input = input} 
-                        onChange={() => this.props.actions.setFilter(this.ctrls.input.value)} />
+                        onChange={() => this.props.app.actions.setFilter(this.ctrls.input.value)} />
                     <a className="github" href="https://github.com/aaronsky/badges">
                         <i className="fa fa-github fa-2x"></i>
                     </a>

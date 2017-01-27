@@ -9,13 +9,13 @@ export interface StoreState {
 }
 
 const initialState = {
-    badges: [],
+    badges: <Badge[]>[],
     filter: '',
     isDescending: true,
     loading: false
 };
 
-export default function (state = initialState, action = {}) {
+export default function (state = initialState, action: { type: string } = { type: '' }) {
     switch (action.type) {
         case types.SET_BADGES:
             return {
