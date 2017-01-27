@@ -5,53 +5,23 @@ import { Navbar } from './Navbar';
 import { BadgeRow } from './BadgeRow';
 import { Badge } from '../models';
 
-interface GuideProps {
-    url: string
-}
-
-interface GuideState {
-    badges: Badge[],
-    filterText: string;
-    isDoneLoading: boolean;
-    isDescending: boolean;
-}
-
-export class Guide extends React.Component<GuideProps, GuideState> {
+export class Guide extends React.Component<any, undefined> {
     constructor(props: GuideProps) {
         super(props);
-        this.state = {
-            badges: [],
-            filterText: '',
-            isDoneLoading: false,
-            isDescending: true
-        };
     }
     
-    componentDidMount() {
-
+    async componentDidMount() {
+        if (this.props.badges.length === 0 && this.props.filter.length === '') {
+            await loadBadges();
+        }
     }
 
-    loadBadges() {
-
+    async loadBadges() {
+        return null;
     }
 
-    handleUserInput(filterText: string) {
-        this.setState({ filterText });
-    }
-
-    handleSortDirectionToggle() {
-        const { badges, isDescending } = this.state;
-        badges.sort((a, b) => {
-            if (isDescending) {
-                return b.id - a.id;
-            }
-            return a.id - b.id;
-        });
-        this.setState({ isDescending });
-    }
-
-    isMatch(badge: Badge) {
-        const filterString = this.escapeRegExp(this.state.filterText);
+    isMatch(badge: Badge, filter: string) {
+        const filterString = this.escapeRegExp(filter);
         const regexFilter = new RegExp(filterString, 'i');
         return regexFilter.test(badge.name) ||
                 regexFilter.test(badge.title) ||
@@ -65,9 +35,9 @@ export class Guide extends React.Component<GuideProps, GuideState> {
     }
 
     queryBadges(badge: Badge) {
-        if (!this.state.filterText) {
+        if (!this.props.filter) {
             return true;
-        } else if (this.isMatch(badge)) {
+        } else if (this.isMatch(badge, this.props.filter)) {
             return true;
         } else if (badge.isGroup) {
             for (let i = 0; i < badge.badges.length; i++) {
@@ -79,16 +49,24 @@ export class Guide extends React.Component<GuideProps, GuideState> {
         }
     }
 
-    processBadges(badge: Badge, index: number, badges: Badge[]) {
-        const lastBadge = badges[index - 1];
-        let lastDate;
-        if (lastBadge) {
-            lastDate = lastBadge.createdAt;
+    sortBadges(a: Badge, b: Badge) {
+        if (this.props.isDescending) {
+            return b.id - a.id;
         }
+        return a.id - b.id;
+    }
+
+    processBadges(badge: Badge, index: number, badges: Badge[]) {
+        const key = badge.id;
+        const { isDescending } = this.props;
+        
+        const lastBadge = badges[index - 1];
+        const lastDate = lastBadge && lastBadge.createdAt;
+
         const props = {
-            key: badge.id,
-            badge: badge,
-            isDescending: this.state.isDescending,
+            key,
+            badge,
+            isDescending,
             lastDate
         };
         return (
@@ -97,17 +75,20 @@ export class Guide extends React.Component<GuideProps, GuideState> {
     }
 
     maybeRenderList() {
-        if (this.state.isDoneLoading) {
-            const directionIcon = `fa fa-caret-${this.state.isDescending ? 'down' : 'up'}`;
-            const directionWord = this.state.isDescending ? 'Descending' : 'Ascending';
-            const badges = this.state.badges.filter(this.queryBadges).map(this.processBadges);
+        if (this.props.isDoneLoading) {
+            const directionIcon = `fa fa-caret-${this.props.isDescending ? 'down' : 'up'}`;
+            const directionWord = this.props.isDescending ? 'Descending' : 'Ascending';
+            const badges = this.props.badges.filter(this.queryBadges)
+                                            .sort(this.sortBadges)
+                                            .map(this.processBadges);
 
             return (
                  <div>
                     <div className="sortContainer">
                         By Creation Date:
-                        <div className="direction" onClick={this.handleSortDirectionToggle.bind(this)}>
-                            <i className={directionIcon} /> {directionWord}
+                        <div className="direction" onClick={() => this.props.actions.setSortOrder(!this.props.isDescending)}>
+                            <i className={directionIcon} />
+                            {directionWord}
                         </div>
                     </div>
                     <div className="badgeList">
@@ -125,8 +106,7 @@ export class Guide extends React.Component<GuideProps, GuideState> {
 
     render() {
         const props = {
-            filterText: this.state.filterText,
-            onUserType: this.handleUserInput
+            app: this.props
         };
         return (
             <div>

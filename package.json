@@ -1,30 +1,38 @@
 {
   "name": "badges",
   "version": "2.0.0",
-  "description": "The new badge guide for Starmen.net written using React.",
-  "main": "bin/index.js",
-  "scripts": {},
+  "author": "Aaron Sky <aaronsky@skyaaron.com> (http://skyaaron.com/)",
+  "description": "The new badge guide for Starmen.net written using React and Koa",
+  "license": "MIT",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "serve": "./node_modules/.bin/webpack-dev-server --progress --colors",
+    "start": "node dist/bundle.js"
+  },
+  "homepage": "https://github.com/aaronsky/badges#readme",
   "repository": {
     "type": "git",
     "url": "git+https://aaronsky@github.com/aaronsky/badges.git"
   },
-  "author": "Aaron Sky <aaronsky@skyaaron.com> (http://skyaaron.com/)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aaronsky/badges/issues"
   },
-  "homepage": "https://github.com/aaronsky/badges#readme",
+  "dependencies": {
+    "koa": "^1.2.4",
+    "koa-static": "^2.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
+  },
   "devDependencies": {
+    "@types/react": "^15.0.4",
+    "@types/react-dom": "^0.14.21",
     "awesome-typescript-loader": "^3.0.0-beta.18",
     "source-map-loader": "^0.1.6",
     "typescript": "^2.1.5",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.14.0"
-  },
-  "dependencies": {
-    "@types/react": "^15.0.4",
-    "@types/react-dom": "^0.14.21",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
   }
 }
