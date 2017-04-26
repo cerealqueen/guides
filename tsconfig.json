@@ -3,7 +3,6 @@
         "outDir": "./dist",
         "rootDir": "./app",
         "sourceMap": true,
-        "noImplicitAny": true,
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es6",
@@ -11,10 +10,9 @@
         "pretty": true
     },
     "exclude": [
-        ".github",
-        ".vscode",
-        "node_modules",
-        "css",
-        "dist"
+        ".github/",
+        ".vscode/",
+        "node_modules/",
+        "app/public/"
     ]
 }

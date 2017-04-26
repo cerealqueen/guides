@@ -2,21 +2,20 @@
         Web developer: Aaron Sky
         Contact: metc@starmen.net
         Twitter: @theaaronsky
-        From: New Bedford, Massachusetts, United States
+        From: Boston, Massachusetts, United States
 
 /* THANKS */
         Logo Designer: Kris
         Twitter: @krystleis
 
-        Data Miner: Tyler Phelan
+        Data Miner: Nicole Phelan
         Twitter: @helloiamarfy
 
         Data Miner: Derek Rose
         Twitter: @DerekRRose
 
 /* SITE */
-        Last update: 06/23/2015
+        Last update: 04/20/2017
         Language: English
-        Standards: HTML5, CSS3, ES5.1
-        Components: React, Node, Gulp, Jest
-        Edited in: Sublime Text 3, Brackets
+        Components: React, Koa, Pug
+        Edited in: Visual Studio Code

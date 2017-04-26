@@ -1,17 +1,31 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+export enum SortDirection {
+    ascending,
+    descending
+};
+
 interface NavbarProps {
-    app: any
+    filterText: string;
+    onChange: (newValue: string) => void;
 }
 
-export class Navbar extends React.Component<NavbarProps, undefined> {
-    ctrls: {
-        input?: HTMLInputElement
-    } = {}
+interface NavbarState {
+
+}
+
+export class Navbar extends React.Component<NavbarProps, NavbarState> {
+    private input?: HTMLInputElement = null;
+
+    constructor(props) {
+        super(props);
+
+        this.handleChange = this.handleChange.bind(this);
+    }
 
     handleChange() {
-        
+        this.props.onChange(this.input.value);
     }
 
     render() {
@@ -25,9 +39,9 @@ export class Navbar extends React.Component<NavbarProps, undefined> {
                         className="search" 
                         type="search" 
                         placeholder="Search" 
-                        value={this.props.app.filter} 
-                        ref={input => this.ctrls.input = input} 
-                        onChange={() => this.props.app.actions.setFilter(this.ctrls.input.value)} />
+                        ref={(ref) => { this.input = ref; }}
+                        value={this.props.filterText}
+                        onChange={this.handleChange} />
                     <a className="github" href="https://github.com/aaronsky/badges">
                         <i className="fa fa-github fa-2x"></i>
                     </a>

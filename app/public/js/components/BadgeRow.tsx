@@ -2,14 +2,15 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { Badge } from '../models';
+import { SortDirection } from './navbar';
 
 interface BadgeRowProps {
     badge: Badge,
     lastDate: Date,
-    isDescending: boolean
+    sortDirection: SortDirection
 }
 
-export class BadgeRow extends React.Component<BadgeRowProps, undefined> {
+export class BadgeRow extends React.Component<BadgeRowProps, {}> {
     maybeRenderImage(badge: Badge) {
         let imgContainer;
         if (badge.isGroup) {
@@ -77,7 +78,8 @@ export class BadgeRow extends React.Component<BadgeRowProps, undefined> {
     }
     
     render() {
-        const { badge, lastDate, isDescending } = this.props;
+        const { badge, lastDate, sortDirection } = this.props;
+        const isDescending = sortDirection === SortDirection.descending;
         let thisYear;
         if (badge.createdAt) {
             thisYear = badge.createdAt.getFullYear();

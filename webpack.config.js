@@ -1,29 +1,48 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const prod = process.env.NODE_ENV === 'production';
+console.log(`Compiling client code with production set to '${prod}'`);
+
+const publicJsPath = path.resolve(__dirname, 'app', 'public', 'js');
+
 module.exports = {
-    entry: './app/index.ts',
-    output: { path: `${__dirname}/dist`, filename: 'bundle.js' },
-    devtool: 'source-map',
-    debug: true,
-    resolve: { extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js'] },
-    module: {
-        loaders: [
-            {
-                test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader',
-                exclude: /node_modules/
-            }
-        ],
-        preLoaders: [
-            {
-                test: /\.js$/,
-                loader: 'source-map-loader'
-            }
-        ]
+    target: 'web',
+    entry: path.resolve(publicJsPath, 'index.tsx'),
+    output: {
+        path: publicJsPath,
+        filename: 'app.bundle.js'
     },
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+    module: {
+        rules: [{
+            test: /\.ts(x?)$/,
+            exclude: /node_modules/,
+            use: [
+                { loader: 'babel-loader' },
+                { loader: 'ts-loader' }
+            ]
+        }, {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: [
+                { loader: 'babel-loader' }
+            ]
+        },
+        {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: ['file?context=src/images&name=images/[path][name].[ext]', 'image-webpack?optimizationLevel=2'],
+            exclude: /node_modules/,
+            include: __dirname,
+        }, {
+            test: /\.scss$/,
+            use: prod ? (
+                ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
+            ) : (
+                'style!css!postcss!sass'
+            )
+        }]
+    },
+    resolve: {
+        extensions: ['.js', '.json', '.ts', '.tsx']
     }
 };
